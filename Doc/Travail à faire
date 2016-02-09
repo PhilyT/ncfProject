@@ -1,0 +1,9 @@
+Couche Serveur : Un package avec : le modèle de la base de données + Classe de Requete de insert et  de select dans la bas de données
+
+Un Package gèrant la lecture de la carte
+
+
+
+
+
+Couche Client : Un package IHM
