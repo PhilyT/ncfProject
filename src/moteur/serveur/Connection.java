@@ -1,4 +1,4 @@
-package bdConnection;
+package moteur.serveur;
 import java.sql.*;
 
 public class Connection {
