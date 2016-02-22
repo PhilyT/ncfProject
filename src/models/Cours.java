@@ -46,26 +46,26 @@ public class Cours
 	
 	public void setId(int id_c)
 	{
-		id_c = id_c;
+		this.id_c = id_c;
 	}
 	
 	public void setHeureDebut(Time heureDebut)
 	{
-		heureDebut = heureDebut;
+		this.heureDebut = heureDebut;
 	}
 	
 	public void setHeureFin(Time heureFin)
 	{
-		heureFin = heureFin;
+		this.heureFin = heureFin;
 	}
 	
 	public void setLibelle(String libelle)
 	{
-		libelle = libelle;
+		this.libelle = libelle;
 	}
 	
 	public void setSalle(String salle)
 	{
-		salle = salle;
+		this.salle = salle;
 	}
 }
