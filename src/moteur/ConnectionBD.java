@@ -1,5 +1,8 @@
-package moteur.serveur;
+package moteur;
 import java.sql.*;
+
+import models.*;
+
 
 public class ConnectionBD
 {
@@ -10,11 +13,11 @@ public class ConnectionBD
 	public ConnectionBD() throws SQLException, ClassNotFoundException
 	{
 		Class.forName("com.mysql.jdbc.Driver");
-		url = "jdbc:mysql://localhost:3306/test";
+		url = "jdbc:mysql://localhost:3306/rfid_project";
 		con = DriverManager.getConnection(url,"root","");
 	}
 	
-	public void getPresenceEtudiant()
+	public void getPresenceEtudiant(Cours cour, Date date)
 	{
 		
 	}
