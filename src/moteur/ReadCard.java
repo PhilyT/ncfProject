@@ -1,4 +1,4 @@
-package moteur.serveur;
+package moteur;
 
 import java.util.List;
 
