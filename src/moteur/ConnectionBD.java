@@ -1,5 +1,7 @@
 package moteur;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 import models.*;
 
@@ -17,9 +19,17 @@ public class ConnectionBD
 		con = DriverManager.getConnection(url,"root","");
 	}
 	
-	public void getPresenceEtudiant(Cours cour, Date date)
+	public ArrayList<Presence> getPresenceEtudiant(Cours cour, Date date)
 	{
+		ArrayList<Presence> res = new ArrayList<Presence>();
+		return res;
+	}
+	
+	public ArrayList<Eleve> getEtudiants()
+	{
+		ArrayList<Eleve> res = new ArrayList<Eleve>();
 		
+		return res;
 	}
 }
 

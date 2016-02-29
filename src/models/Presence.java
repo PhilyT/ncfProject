@@ -43,27 +43,27 @@ public class Presence {
 		return idPassage;
 	}
 	
-	public void setIdEtud()
+	public void setIdEtud(Eleve idEtud)
 	{
 		this.idEtud = idEtud;
 	}
 	
-	public void setIdCours()
+	public void setIdCours(Cours idCours)
 	{
 		this.idCours = idCours;
 	}
 	
-	public void setPresence()
+	public void setPresence(PresenceEnum presence)
 	{
 		this.presence = presence;
 	}
 	
-	public void setDate()
+	public void setDate(Date date)
 	{
 		this.date = date;
 	}
 	
-	public void setIdPassage()
+	public void setIdPassage(Passage idPassage)
 	{
 		this.idPassage = idPassage;
 	}
