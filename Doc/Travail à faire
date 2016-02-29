@@ -1,9 +1,11 @@
 Couche Serveur : Un package avec : le modèle de la base de données + Classe de Requete de insert et  de select dans la bas de données
 
+Control les information de la carte
+Enregister le passage de l'�tudiant 
+
 Un Package gèrant la lecture de la carte
-
-
-
+----> lit la carte
 
 
 Couche Client : Un package IHM
+Relie les routes avec l'api rest et affichage graphique
