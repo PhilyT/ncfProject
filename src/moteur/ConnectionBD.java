@@ -8,8 +8,8 @@ import models.*;
 
 public class ConnectionBD
 {
-	Connection con;
-	String url;
+	private Connection con;
+	private String url;
 	
 
 	public ConnectionBD() throws SQLException, ClassNotFoundException
@@ -22,6 +22,7 @@ public class ConnectionBD
 	public ArrayList<Presence> getPresenceEtudiant(Cours cour, Date date)
 	{
 		ArrayList<Presence> res = new ArrayList<Presence>();
+		
 		return res;
 	}
 	
@@ -30,6 +31,11 @@ public class ConnectionBD
 		ArrayList<Eleve> res = new ArrayList<Eleve>();
 		
 		return res;
+	}
+	
+	public void postPassage(String idCard)
+	{
+		
 	}
 }
 
