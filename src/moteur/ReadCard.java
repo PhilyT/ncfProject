@@ -16,38 +16,38 @@ public class ReadCard
 		channel = null;
 	}
 	
-	public static void read(String conteneur)throws CardException
+	/**
+	 * Tente la connection avec le lecteur, retourne le numero de la carte
+	 * si elle a été détécter.
+	 * @return Numéro de la carte sous forme de string.
+	 * @throws CardException si problème de lecture, Exception si aucune carte a été detecté.
+	 */
+	public static String read()throws CardException, Exception
 	{
-		if(openConnection(conteneur)) 
+		String conteneur = "";
+		if(openConnection()) 
 		{
-    		conteneur += "Connection open!\n";
+			System.out.println("Connection open!");
 	    	ATR atr = card.getATR();
 	        byte[] baAtr = atr.getBytes();
-	        conteneur += "ATR = 0x\n";
-            for(int i = 0; i < baAtr.length; i++ )
-            {
-                conteneur += "%02X " + baAtr[i] + "\n";
-            }
-            conteneur += "\n";
             byte[] cmdApduGetCardUid = new byte[]{(byte)0xFF, (byte)0xCA, (byte)0x00, (byte)0x00, (byte)0x00};
             ResponseAPDU respApdu = channel.transmit(new CommandAPDU(cmdApduGetCardUid));
-
 			if(respApdu.getSW1() == 0x90 && respApdu.getSW2() == 0x00)
 			{
 				byte[] baCardUid = respApdu.getData();
-				
-				System.out.print("Card UID = 0x");
+				System.out.println("Id card : ");
 				for(int i = 0; i < baCardUid.length; i++ )
 				{
-				   conteneur += "%02X " + baCardUid[i];
+				   conteneur += String.format("%02X ", baCardUid[i]);
 				}
-				conteneur += "\n";
 			}
 	        disconnect();
+	        return conteneur;
     	}
+		throw new Exception("No card detected!");
 	}
 
-	public static boolean openConnection(String conteneur) 
+	private static boolean openConnection() 
 	{
 		TerminalFactory factory = TerminalFactory.getDefault();
 		CardTerminals cardterminals = factory.terminals();
@@ -55,21 +55,21 @@ public class ReadCard
 		try 
 		{
 			List<CardTerminal> terminals = cardterminals.list();
-			conteneur += "Terminals: " + terminals + "\n";
+			System.out.println("Terminals: " + terminals);
 			CardTerminal terminal = cardterminals.getTerminal(terminals.get(0).getName());
 			terminal.waitForCardPresent(20000);
 			if(terminal.isCardPresent()) 
 			{
-				conteneur += "Card detected!\n";
+				System.out.println("Card detected!");
 				card = terminal.connect("*");
 				System.out.println("Card: " + card);
 				channel = card.getBasicChannel();
-				conteneur += "Channel: " + channel + "\n";
+				System.out.println("Channel: " + channel);
 				return true;
 			} 
 			else 
 			{
-				conteneur += "No card detected!\n";
+				System.out.println("No card detected!");
 			}
 		} 
 		catch (Exception e) 
@@ -79,7 +79,7 @@ public class ReadCard
 		return false;
 	}
 	
-	public static void disconnect() 
+	private static void disconnect() 
 	{
 		try 
 		{
