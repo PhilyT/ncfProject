@@ -61,18 +61,12 @@ public class ConnectionBD
 		return res;
 	}
 	
-	public void insertCours( Cours cours)
+	public void insertCours( Cours cours) throws SQLException
 	{
-		String requete = "INSERT INTO cours (heureDebut, heureFin, libelle, salle) VALUES ("+cours.getHeureDebut()+","+cours.getHeureFin()+", "+cours.getLibelle()+"," +cours.getSalle()+")";
-		ResultSet result = null;
-		try
-		{
-			Statement stmt = connection.createStatement();
-			result = stmt.executeQuery(requete);
-			
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
+		Statement statement = connection.createStatement();
+		
+		statement.executeUpdate("INSERT INTO cours "
+				+  "VALUES ('"+cours.getId()+"','"+cours.getHeureDebut()+"','"+cours.getHeureFin()+"', '"+cours.getLibelle()+"','" +cours.getSalle()+"')");
 	}
 	
 	public void insertEtudiants(Eleve eleve) throws SQLException
