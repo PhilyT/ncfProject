@@ -38,7 +38,7 @@ public class ReadCard
 				System.out.println("Id card : ");
 				for(int i = 0; i < baCardUid.length; i++ )
 				{
-				   conteneur += String.format("%02X ", baCardUid[i]);
+				   conteneur += String.format("%02X", baCardUid[i]);
 				}
 			}
 	        disconnect();
