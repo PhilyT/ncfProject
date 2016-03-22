@@ -11,11 +11,12 @@ public class main
 	{
 		try
 		{
-			//ConnectionBD macon = new ConnectionBD();
-			//ArrayList<Eleve> eleves = macon.getEtudiants();
-			ReadCard readercard = new ReadCard();
-			String message = readercard.read();
-			System.out.print(message);
+			ConnectionBD maco = new ConnectionBD();
+			maco.insertEtudiants(new Eleve (3,"Stéphanie","Carrié",123456));
+			ArrayList<Eleve> eleves = maco.getEtudiants();
+			//ReadCard readercard = new ReadCard();
+			//String message = readercard.read();
+			//System.out.println(message);
 		}
 		catch(Exception e)
 		{
