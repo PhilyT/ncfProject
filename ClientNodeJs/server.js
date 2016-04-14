@@ -23,4 +23,13 @@ app.get('/login', function(req, res){
     res.render('login');
 });
 
+app.get('/badgeetudiant', function (req, res){
+	res.render('badgeetudiant');
+
+});
+
+app.get('/loginprof', function (req,res){
+	res.render('loginprof');
+});
+
 app.listen(1313);
