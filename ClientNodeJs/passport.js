@@ -41,7 +41,20 @@
  			},
  			function (req, email, password, done) 
  			{
- 				connection.query("SELECT * FROM")
+ 				connection.query("SELECT * FROM users WHERE email='"+email+"'", function(err,rows)
+ 				{
+ 					console.log(rows);
+ 					console.log("above row object");
+ 					if (err) {
+ 						return done(err)
+ 					}
+ 					if (rows.lenght) {
+ 						return done(null, false, req.flash('signupMessage','Cette email existe déja.'));
+ 					}
+ 					else {
+ 						
+ 					}
+ 				})
  			}
  		)
  	)
