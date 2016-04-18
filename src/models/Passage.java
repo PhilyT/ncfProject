@@ -15,6 +15,12 @@ public class Passage {
 		this.heureDepart = heureDepart;
 	}
 	
+	public Passage(int id_p, Date heureDepart)
+	{
+		this.id_p = id_p;
+		this.heureDepart = heureDepart;
+	}
+	
 	public int getId_p()
 	{
 		return id_p;
