@@ -12,12 +12,13 @@ public class main
 	{
 		try
 		{
-			ConnectionBD maco = new ConnectionBD();
+			//ConnectionBD maco = new ConnectionBD();
 			//maco.insertCours(new Cours (4,new Time(9,00,00),new Time(14,00,00),"JEE","202"));
-			ArrayList<Eleve> eleves = maco.getEtudiants();
-			//ReadCard readercard = new ReadCard();
-			//String message = readercard.read();
-			//System.out.println(message);
+			//ArrayList<Eleve> eleves = maco.getEtudiants();
+			//System.out.println("");
+			ReadCard readercard = new ReadCard();
+			String message = readercard.read();
+			System.out.println(message);
 		}
 		catch(Exception e)
 		{
