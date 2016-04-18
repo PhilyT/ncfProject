@@ -76,9 +76,23 @@ public class ConnectionBD
 		statement.executeUpdate("INSERT INTO eleve " 
 				+ "VALUES ('"+eleve.getId()+"','"+eleve.getPrenom()+"', '"+eleve.getNom()+"','" +eleve.getIdCarte()+"')");
 	}
-	public void postPassage(String idCard)
+	
+	public void insertPassage(Passage passage) throws SQLException
 	{
 		
+		Statement statement = connection.createStatement();
+		
+		statement.executeUpdate("INSERT INTO passage (id_p, heureDepart)"
+				+ "VALUES ('"+passage.getId_p()+"', '"+passage.getHeureDepart()+"')");
+		
+	}
+	
+	public void insertPresence(Presence presence) throws SQLException
+	{
+		Statement statement = connection.createStatement();
+		
+		statement.executeUpdate("INSERT INTO presence "
+				+ "VALUES ('"+presence.getIdEtud()+"','"+presence.getIdCours()+"','"+presence.getPresence()+"','"+presence.getDate()+"','"+presence.getIdPassage()+"')");
 	}
 }
 
