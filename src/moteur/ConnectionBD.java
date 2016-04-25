@@ -104,6 +104,38 @@ public class ConnectionBD
 	}
 	
 	
+	public ArrayList<Passage> getPassage() throws SQLException
+	{
+		ArrayList<Passage> res = new ArrayList<Passage>();
+		ResultSet result;
+		String requete = "SELECT * FROM passage";
+		Statement stmt = null;
+		
+		try 
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			
+			while(result.next()){
+				Passage unPassage = new Passage(); // Nouvelle instance
+		        
+				unPassage.setId_p(result.getInt("id_p"));
+				unPassage.setHeureArrivee(result.getTimestamp("heureArrivee"));
+				unPassage.setHeureDepart(result.getDate("heureDepart")); 
+				
+		 
+				res.add(unPassage); 
+			}
+		}
+		catch (SQLException e)
+		{
+			
+		} finally {
+			stmt.close();
+		}
+		return res;
+	}
+	
 	
 	public void insertCours( Cours cours) throws SQLException
 	{
