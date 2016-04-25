@@ -32,34 +32,44 @@ public class ConnectionBD
 	{
 		ArrayList<Presence> res = new ArrayList<Presence>();
 		
-		ResultSet résultats = null;
+		ResultSet resultats = null;
 
 		
 		return res;
 	}
 	
-	public ArrayList<Eleve> getEtudiants()
+	public ArrayList<Eleve> getEtudiants() throws SQLException
 	{
 		ArrayList<Eleve> res = new ArrayList<Eleve>();
 		ResultSet result;
 		String requete = "SELECT * FROM eleve";
+		Statement stmt = null;
 		
 		try 
 		{
-			Statement stmt = connection.createStatement();
+			stmt = connection.createStatement();
 			result = stmt.executeQuery(requete);
 			
-			
+			while(result.next()){
+				Eleve unEleve = new Eleve(); // Nouvelle instance
+		        
+				unEleve.setPrenom(result.getString("prenom")); 
+				unEleve.setNom(result.getString("nom")); 
+				unEleve.setIdCarte(result.getInt("idCarte"));
+		 
+				res.add(unEleve); 
+			}
 		}
 		catch (SQLException e)
 		{
 			
+		} finally {
+			stmt.close();
 		}
-		
-		
-		
 		return res;
 	}
+	
+	
 	
 	public void insertCours( Cours cours) throws SQLException
 	{
