@@ -38,6 +38,40 @@ public class ConnectionBD
 		return res;
 	}
 	
+	public ArrayList<Cours> getCours() throws SQLException
+	{
+		ArrayList<Cours> res = new ArrayList<Cours>();
+		ResultSet result;
+		String requete = "SELECT * FROM cours";
+		Statement stmt = null;
+		
+		try 
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			
+			while(result.next()){
+				Cours unCours = new Cours(); // Nouvelle instance
+		        
+				unCours.setId(result.getInt("id_c"));
+				unCours.setHeureDebut(result.getTime("heureDebut"));
+				unCours.setHeureFin(result.getTime("heureFin"));
+				unCours.setLibelle(result.getString("libelle"));
+				unCours.setSalle(result.getString("salle"));
+				
+		 
+				res.add(unCours); 
+			}
+		}
+		catch (SQLException e)
+		{
+			
+		} finally {
+			stmt.close();
+		}
+		return res;
+	}
+	
 	public ArrayList<Eleve> getEtudiants() throws SQLException
 	{
 		ArrayList<Eleve> res = new ArrayList<Eleve>();

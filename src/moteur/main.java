@@ -16,10 +16,10 @@ public class main
 			ConnectionBD maco = new ConnectionBD();
 			//maco.connect();
 			//maco.insertCours(new Cours (4,new Time(9,00,00),new Time(14,00,00),"JEE","202"));
-			ArrayList<Eleve> eleves = maco.getEtudiants();
-			System.out.println("Eleve 1 = "+eleves.get(0).getPrenom());
-			System.out.println("Eleve 2 = "+eleves.get(1).getPrenom());
-			System.out.println("Eleve 3 = "+eleves.get(2).getPrenom());
+			ArrayList<Cours> cours = maco.getCours();
+			System.out.println("Cours 1 = "+cours.get(0).getLibelle());
+			System.out.println("Cours 2 = "+cours.get(1).getLibelle());
+			System.out.println("Cours 3 = "+cours.get(2).getLibelle());
 			//ReadCard readercard = new ReadCard();
 			//String message = readercard.read();
 			//System.out.println(message);
