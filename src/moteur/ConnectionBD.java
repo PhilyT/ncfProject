@@ -136,6 +136,41 @@ public class ConnectionBD
 		return res;
 	}
 	
+	public ArrayList<Eleve> getPresence() throws SQLException
+	{
+		ArrayList<Presence> res = new ArrayList<Presence>();
+		ResultSet result;
+		String requete = "SELECT * FROM presence";
+		Statement stmt = null;
+		
+		try 
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			
+			while(result.next()){
+				Presence unePresence = new Presence(); // Nouvelle instance
+		        
+				
+				unePresence.setIdEtud(result.getEleve("idEtud"));
+				unePresence.setIdCours(result.getCours("idCours"));
+				unePresence.setPresence(result.getPresenceEnum("presence"));
+				unePresence.setDate(result.getDate("date"));
+				unePresence.setPassage(result.getPassage("idPassage"));
+				
+				
+		 
+				res.add(unePresence); 
+			}
+		}
+		catch (SQLException e)
+		{
+			
+		} finally {
+			stmt.close();
+		}
+		return res;
+	}
 	
 	public void insertCours( Cours cours) throws SQLException
 	{
