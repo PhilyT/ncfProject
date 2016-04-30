@@ -136,7 +136,7 @@ public class ConnectionBD
 		return res;
 	}
 	
-	public ArrayList<Eleve> getPresence() throws SQLException
+	public ArrayList<Presence> getPresence() throws SQLException
 	{
 		ArrayList<Presence> res = new ArrayList<Presence>();
 		ResultSet result;
@@ -152,11 +152,11 @@ public class ConnectionBD
 				Presence unePresence = new Presence(); // Nouvelle instance
 		        
 				
-				unePresence.setIdEtud(result.getEleve("idEtud"));
-				unePresence.setIdCours(result.getCours("idCours"));
-				unePresence.setPresence(result.getPresenceEnum("presence"));
+				unePresence.setIdEtud(result.getInt("idEtud"));
+				unePresence.setIdCours(result.getInt("idCours"));
+				unePresence.setPresence(PresenceEnum.valueOf(result.getString("presence")));
 				unePresence.setDate(result.getDate("date"));
-				unePresence.setPassage(result.getPassage("idPassage"));
+				unePresence.setIdPassage(result.getInt("idPassage"));
 				
 				
 		 

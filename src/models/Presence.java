@@ -3,13 +3,13 @@ import java.sql.Date;
 
 public class Presence {
 	
-	private Eleve idEtud;
-	private Cours idCours;
+	private int idEtud;
+	private int idCours;
 	private PresenceEnum presence;
 	private Date date;
-	private Passage idPassage;
+	private int idPassage;
 	
-	public Presence(Eleve idEtud, Cours idCours, PresenceEnum presence, Date date, Passage idPassage )
+	public Presence(int idEtud, int idCours, PresenceEnum presence, Date date, int idPassage )
 	{
 		this.idEtud = idEtud;
 		this.idCours = idCours;
@@ -18,12 +18,17 @@ public class Presence {
 		this.idPassage = idPassage;
 	}
 	
-	public Eleve getIdEtud()
+	public Presence()
+	{
+		
+	}
+	
+	public int getIdEtud()
 	{
 		return idEtud;
 	}
 	
-	public Cours getIdCours()
+	public int getIdCours()
 	{
 		return idCours;
 	}
@@ -38,17 +43,17 @@ public class Presence {
 		return date;
 	}
 	
-	public Passage getIdPassage()
+	public int getIdPassage()
 	{
 		return idPassage;
 	}
 	
-	public void setIdEtud(Eleve idEtud)
+	public void setIdEtud(int idEtud)
 	{
 		this.idEtud = idEtud;
 	}
 	
-	public void setIdCours(Cours idCours)
+	public void setIdCours(int idCours)
 	{
 		this.idCours = idCours;
 	}
@@ -63,7 +68,7 @@ public class Presence {
 		this.date = date;
 	}
 	
-	public void setIdPassage(Passage idPassage)
+	public void setIdPassage(int idPassage)
 	{
 		this.idPassage = idPassage;
 	}
