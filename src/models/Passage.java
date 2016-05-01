@@ -8,6 +8,8 @@ public class Passage {
 	private Timestamp heureArrivee;
 	private Date heureDepart;
 	
+	public Passage(){}
+	
 	public Passage(int id_p, Timestamp heureArrivee, Date heureDepart)
 	{
 		this.id_p = id_p;

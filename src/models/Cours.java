@@ -10,6 +10,8 @@ public class Cours
 	private String libelle;
 	private String salle;
 	
+	public Cours(){}
+	
 	public Cours(int id_c, Time heureDebut, Time heureFin, String libelle, String salle)
 	{
 		this.id_c = id_c;

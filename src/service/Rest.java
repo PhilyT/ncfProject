@@ -11,18 +11,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 @Path("/")
 public class Rest 
-{
-	/*public Response sendResponse(int status, String entity, String methode)
-	{
-		return Response
-				.status(status)
-				.entity(entity)
-				.header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With")
-                .header("Access-Control-Allow-Methods", methode)
-                .build();	
-	}*/
-	
+{	
 	@GET
     @Path("/scan")
     @Produces(MediaType.APPLICATION_JSON)
@@ -39,6 +28,11 @@ public class Rest
 		{
 			e.printStackTrace();
 		}
-		return "";
+		return "salut";
+	}
+	
+	public static void main(String[] args)
+	{
+		
 	}
 }

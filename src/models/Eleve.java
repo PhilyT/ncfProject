@@ -7,6 +7,7 @@ public class Eleve {
 	private String nom;
 	private int idCarte;
 	
+	public Eleve() {}
 	public Eleve(int id, String prenom, String nom, int idCarte)
 	{
 		this.id = id;

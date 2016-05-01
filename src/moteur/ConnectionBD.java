@@ -32,32 +32,143 @@ public class ConnectionBD
 	{
 		ArrayList<Presence> res = new ArrayList<Presence>();
 		
-		ResultSet résultats = null;
+		ResultSet resultats = null;
 
 		
 		return res;
 	}
 	
-	public ArrayList<Eleve> getEtudiants()
+	public ArrayList<Cours> getCours() throws SQLException
 	{
-		ArrayList<Eleve> res = new ArrayList<Eleve>();
+		ArrayList<Cours> res = new ArrayList<Cours>();
 		ResultSet result;
-		String requete = "SELECT * FROM eleve";
+		String requete = "SELECT * FROM cours";
+		Statement stmt = null;
 		
 		try 
 		{
-			Statement stmt = connection.createStatement();
+			stmt = connection.createStatement();
 			result = stmt.executeQuery(requete);
 			
-			
+			while(result.next()){
+				Cours unCours = new Cours(); // Nouvelle instance
+		        
+				unCours.setId(result.getInt("id_c"));
+				unCours.setHeureDebut(result.getTime("heureDebut"));
+				unCours.setHeureFin(result.getTime("heureFin"));
+				unCours.setLibelle(result.getString("libelle"));
+				unCours.setSalle(result.getString("salle"));
+				
+		 
+				res.add(unCours); 
+			}
 		}
 		catch (SQLException e)
 		{
 			
+		} finally {
+			stmt.close();
 		}
+		return res;
+	}
+	
+	public ArrayList<Eleve> getEtudiants() throws SQLException
+	{
+		ArrayList<Eleve> res = new ArrayList<Eleve>();
+		ResultSet result;
+		String requete = "SELECT * FROM eleve";
+		Statement stmt = null;
 		
+		try 
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			
+			while(result.next()){
+				Eleve unEleve = new Eleve(); // Nouvelle instance
+		        
+				unEleve.setPrenom(result.getString("prenom")); 
+				unEleve.setNom(result.getString("nom")); 
+				unEleve.setIdCarte(result.getInt("idCarte"));
+		 
+				res.add(unEleve); 
+			}
+		}
+		catch (SQLException e)
+		{
+			
+		} finally {
+			stmt.close();
+		}
+		return res;
+	}
+	
+	
+	public ArrayList<Passage> getPassage() throws SQLException
+	{
+		ArrayList<Passage> res = new ArrayList<Passage>();
+		ResultSet result;
+		String requete = "SELECT * FROM passage";
+		Statement stmt = null;
 		
+		try 
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			
+			while(result.next()){
+				Passage unPassage = new Passage(); // Nouvelle instance
+		        
+				unPassage.setId_p(result.getInt("id_p"));
+				unPassage.setHeureArrivee(result.getTimestamp("heureArrivee"));
+				unPassage.setHeureDepart(result.getDate("heureDepart")); 
+				
+		 
+				res.add(unPassage); 
+			}
+		}
+		catch (SQLException e)
+		{
+			
+		} finally {
+			stmt.close();
+		}
+		return res;
+	}
+	
+	public ArrayList<Presence> getPresence() throws SQLException
+	{
+		ArrayList<Presence> res = new ArrayList<Presence>();
+		ResultSet result;
+		String requete = "SELECT * FROM presence";
+		Statement stmt = null;
 		
+		try 
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			
+			while(result.next()){
+				Presence unePresence = new Presence(); // Nouvelle instance
+		        
+				
+				unePresence.setIdEtud(result.getInt("idEtud"));
+				unePresence.setIdCours(result.getInt("idCours"));
+				unePresence.setPresence(PresenceEnum.valueOf(result.getString("presence")));
+				unePresence.setDate(result.getDate("date"));
+				unePresence.setIdPassage(result.getInt("idPassage"));
+				
+				
+		 
+				res.add(unePresence); 
+			}
+		}
+		catch (SQLException e)
+		{
+			
+		} finally {
+			stmt.close();
+		}
 		return res;
 	}
 	
