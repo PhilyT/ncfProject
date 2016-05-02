@@ -20,8 +20,8 @@ public class Rest extends HttpServlet
 {	
 	@GET
     @Path("/scan")
-    @Produces(MediaType.APPLICATION_JSON)
-	public Response scanCard()
+    @Produces(MediaType.TEXT_PLAIN)
+	public String scanCard(@PathParam("rs") String rs)
 	{
 		/*ReadCard readeur = new ReadCard();
 		try
@@ -34,7 +34,7 @@ public class Rest extends HttpServlet
 		{
 			e.printStackTrace();
 		}*/
-		return sendResponse(200,"{'test' : 'salut'}","GET");
+		return "Salut";
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

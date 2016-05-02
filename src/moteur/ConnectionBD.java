@@ -3,7 +3,7 @@ package moteur;
 import java.sql.*;
 import java.util.ArrayList;
 
-import models.*;
+import main.java.models.*;
 
 
 public class ConnectionBD
