@@ -9,10 +9,11 @@
   "keywords": [
     "NODEJS"
   ],
-  "author": "kbouzidi",
-  "license": "MIT",
+  "author": "Phily Tom, Helie-Zadeh Marina, Stephanie Carrie",
+  "license": "LPSIL IDSE",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "xhr2": "*",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "log4js": "^0.6.29",
