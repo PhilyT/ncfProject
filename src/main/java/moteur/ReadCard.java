@@ -6,8 +6,9 @@ import javax.smartcardio.*;
 
 public class ReadCard 
 {
-	private static Card card;
-	private static CardChannel channel;
+	private Card card;
+	private CardChannel channel;
+	private String idResult;
 
 	public ReadCard() 
 	{
@@ -22,7 +23,7 @@ public class ReadCard
 	 * @return Numéro de la carte sous forme de string.
 	 * @throws CardException si problème de lecture, Exception si aucune carte a été detecté.
 	 */
-	public static String read()throws CardException, Exception
+	public  String read()throws CardException, Exception
 	{
 		String conteneur = "";
 		if(openConnection()) 
@@ -36,9 +37,11 @@ public class ReadCard
 			{
 				byte[] baCardUid = respApdu.getData();
 				System.out.println("Id card : ");
+				idResult = "";
 				for(int i = 0; i < baCardUid.length; i++ )
 				{
 				   conteneur += String.format("%02X", baCardUid[i]);
+				   idResult += String.format("%02X", baCardUid[i]);
 				}
 			}
 	        disconnect();
@@ -47,7 +50,7 @@ public class ReadCard
 		throw new Exception("No card detected!");
 	}
 
-	private static boolean openConnection() 
+	private  boolean openConnection() 
 	{
 		TerminalFactory factory = TerminalFactory.getDefault();
 		CardTerminals cardterminals = factory.terminals();
@@ -70,6 +73,7 @@ public class ReadCard
 			else 
 			{
 				System.out.println("No card detected!");
+				idResult = "No card detected!";
 			}
 		} 
 		catch (Exception e) 
@@ -79,7 +83,7 @@ public class ReadCard
 		return false;
 	}
 	
-	private static void disconnect() 
+	private void disconnect() 
 	{
 		try 
 		{
@@ -89,5 +93,10 @@ public class ReadCard
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public String getIdResult()
+	{
+		return idResult;
 	}
 }

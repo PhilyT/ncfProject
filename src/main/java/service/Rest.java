@@ -15,24 +15,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 
 public class Rest extends HttpServlet
-{	
-	/*@GET
-    @Produces(MediaType.APPLICATION_JSON)
-	public HttpServletResponse scanCard() throws JSONException
-	{
-		ReadCard readeur = new ReadCard();
-		try
-		{
-			String reponse = readeur.read();
-			return reponse;
-			
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}		
-	}*/
-	
+{		
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 		try {
@@ -44,8 +27,31 @@ public class Rest extends HttpServlet
     }
 	
 	private void setResponse(HttpServletResponse response) throws JSONException, IOException{
+		
 		JSONObject json = new JSONObject();
-        json.put("test", "salut");
+		ReadCard reader = new ReadCard();
+		String idCard = "";
+		try
+		{
+			reader.read();
+			idCard = reader.getIdResult();
+			if(idCard.equals("No card detected!"))
+			{
+				json.put("etat", idCard);
+				json.put("user", "");
+			}
+			else
+			{
+				json.put("etat", "success");
+				json.put("user", idCard);
+			}
+		}
+		catch(Exception e)
+		{
+			idCard = "Erreur lecture Card";
+			json.put("etat", idCard);
+			json.put("user", "");
+		}
         response.setStatus(200);
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
