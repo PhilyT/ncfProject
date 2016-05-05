@@ -2,8 +2,9 @@ package main.java.moteur;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import main.java.models.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 
 public class ConnectionBD
@@ -15,7 +16,7 @@ public class ConnectionBD
 	public ConnectionBD() throws SQLException, ClassNotFoundException
 	{
 		try{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		System.out.println("Driver O.K.");
 		
 		url = "jdbc:mysql://localhost:3306/rfid_badgeuse";
@@ -105,16 +106,16 @@ public class ConnectionBD
 	
 	public Eleve getEtudiant(String idCard) throws SQLException
 	{
-		Eleve res = new Eleve();
+		Eleve res = null;
 		ResultSet result;
-		String requete = "SELECT * FROM eleve WHERE idCarte = " + idCard;
+		String requete = "SELECT * FROM eleve WHERE idCarte = " + idCard + ";";
 		Statement stmt = null;
 		
 		try 
 		{
 			stmt = connection.createStatement();
 			result = stmt.executeQuery(requete);
-			
+			System.out.println(result.toString());
 			while(result.next()){
 				Eleve unEleve = new Eleve(); // Nouvelle instance
 				unEleve.setId(result.getInt("id"));
@@ -127,7 +128,7 @@ public class ConnectionBD
 		}
 		catch (SQLException e)
 		{
-			
+			System.out.println(e.getMessage());
 		} finally {
 			stmt.close();
 		}
@@ -152,8 +153,6 @@ public class ConnectionBD
 				unPassage.setId_p(result.getInt("id_p"));
 				unPassage.setHeureArrivee(result.getTimestamp("heureArrivee"));
 				unPassage.setHeureDepart(result.getDate("heureDepart")); 
-				
-		 
 				res.add(unPassage); 
 			}
 		}

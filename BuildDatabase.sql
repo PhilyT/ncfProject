@@ -21,7 +21,7 @@ USE rfid_badgeuse;
 
 
 CREATE TABLE IF NOT  EXISTS `cours` (
-  `id_c` int(11) NOT NULL,
+  `id_c` int(11) NOT NULL AUTO_INCREMENT,
   `heureDebut` time NOT NULL,
   `heureFin` time NOT NULL,
   `libelle` varchar(45) NOT NULL,
@@ -34,9 +34,9 @@ CREATE TABLE IF NOT  EXISTS `cours` (
 --
 
 CREATE TABLE IF NOT EXISTS `eleve` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `prenom` varchar(45) NOT NULL,
-  `id_historisation` int(11) NOT NULL,
+  `id_historisation` int(11),
   `nom` varchar(45) NOT NULL,
   `idCarte` varchar(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `eleve` (
 --
 
 CREATE TABLE IF NOT  EXISTS  `passage` (
-  `id_p` int(11) NOT NULL,
+  `id_p` int(11) NOT NULL AUTO_INCREMENT,
   `heureArrivee` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `heureDepart` datetime DEFAULT NULL,
   PRIMARY KEY (`id_p`)
