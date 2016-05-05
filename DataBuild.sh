@@ -9,8 +9,8 @@
 
     # récupération des données de connexion
 
-    read -s -p "Entrer MYSQL host: " host
-    read -s -p "Entrer MYSQL user: " user
+    read  -p "Entrer MYSQL host: " host
+    read  -p "Entrer MYSQL user: " user
     read -s -p "Entrer MYSQL password: " password
 
     # Vérification de la connexion à la base de donnée
@@ -24,7 +24,7 @@
             echo -e "${ROUGE} [ERR] Identifiant incorrect ou pas de base de données $NORMAL"
             exit 1;
     fi
-    echo -e "[${VERT} OK ${NORMAL}]"
+    echo -e "[${VERT} connexion a la base de donne : OK ${NORMAL}]"
 
     # Vérification de l'existance de la base de donnée, supression de la base si existante
 
@@ -32,14 +32,14 @@
 
     bases=`mysql -h$host -u$user -p$password -e "SHOW DATABASES LIKE 'rfid_badgeuse';" -B -s 2> /dev/null`
     if [ -z "$bases" ];then
-        echo -e "[${VERT} NON ${NORMAL}]"
+        echo -e "[${VERT} La base de donne n existe pas : OK ${NORMAL}]"
     else
-        echo -e "[${JAUNE} OUI ${NORMAL}]"
+        echo -e "[${JAUNE} La base de donne existe ${NORMAL}]"
         echo -e " --- Suppression de la database 'Rfid_badgeuse' existante ... \c"
         mysql mysql -h$host -u$user -p$password -e "DROP DATABASE rfid_badgeuse;" -B -s 2> /dev/null
         bases=`mysql -h$host -u$user -p$password -e "SHOW DATABASES LIKE 'rfid_badgeuse';" -B -s 2> /dev/null`
         if [ -z "$bases" ];then
-            echo -e  "[${VERT} OK ${NORMAL}]"
+            echo -e  "[${VERT} La base de donnee n existe plus : OK ${NORMAL}]"
         else
             echo -e "[${ROUGE} ERR ${NORMAL}]"
             echo -e "${ROUGE}     [ERR] La database uno existe encore $NORMAL"
@@ -52,7 +52,7 @@
     echo " --- Création de la nouvelle database 'rfid_badgeuse' ... \c"
     bases=`mysql -h$host -u$user -p$password  < BuildDatabase.sql -B -s`
     if [ -z "$bases" ];then
-        echo -e "[${VERT} OK ${NORMAL}]"
+        echo -e "[${VERT} Base de donnée bien creer : ok  ${NORMAL}]"
     else
         echo -e "[${ROUGE} ERR ${NORMAL}]"
         echo -e "${ROUGE}     [ERR] Probleme script ${NORMAL}"
@@ -67,4 +67,14 @@
             echo -e "${ROUGE}     [ERR] La database rfid n'existe pas $NORMAL"
             exit 1;
     fi
-    echo -e "[${VERT} OK ${NORMAL}]"
+    echo -e "[${VERT} Base de donne : OK ${NORMAL}]"
+
+    # Vérification de la bonne création de la base
+
+    bases=`mysql -h$host -u$user -p$password -e "select user,host from mysql.user where user='rfid';" -B -s 2> /dev/null`
+    if [ -z "$bases" ];then
+            echo -e  "[${ROUGE} ERR $NORMAL]"
+            echo -e "${ROUGE}     [ERR] L utilisateur n existe pas  $NORMAL"
+            exit 1;
+    fi
+    echo -e "[${VERT} Utilisateur : OK ${NORMAL}]"
