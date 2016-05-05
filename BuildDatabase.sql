@@ -52,7 +52,6 @@ CREATE TABLE IF NOT  EXISTS  `passage` (
   `heureDepart` datetime DEFAULT NULL,
   PRIMARY KEY (`id_p`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `presence`
