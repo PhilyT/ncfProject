@@ -51,17 +51,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.sh" pinned="false" current-in-tab="false">
+      <file leaf-file-name="database.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+            <state relative-caret-position="782">
+              <caret line="46" column="63" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuildDatabase.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BuildDatabase.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/BuildDatabase.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -79,8 +79,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database.sh" />
         <option value="$PROJECT_DIR$/script/BuildDatabase.sql" />
+        <option value="$PROJECT_DIR$/database.sh" />
       </list>
     </option>
   </component>
@@ -94,10 +94,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-7" />
+    <option name="width" value="978" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -153,24 +152,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="30-Git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="30-Git" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dump_base_de_donnee" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dump09022016" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -244,18 +225,19 @@
       <updated>1462194543300</updated>
       <workItem from="1462194546004" duration="213000" />
       <workItem from="1462195211145" duration="170000" />
-      <workItem from="1462195393081" duration="3295000" />
+      <workItem from="1462195393081" duration="5540000" />
+      <workItem from="1462280743278" duration="2652000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3678000" />
+    <option name="totallyTimeSpent" value="8575000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="978" height="1047" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15800416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -310,92 +292,98 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ClientNodeJs/passport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/moteur/ConnectionBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ClientNodeJs/passport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/moteur/ConnectionBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dump_base_de_donnee/dump09022016/rfid_badgeuse_cours.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="31" column="37" selection-start-line="17" selection-start-column="0" selection-end-line="31" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dump_base_de_donnee/dump09022016/rfid_badgeuse_eleve.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="31" column="37" selection-start-line="17" selection-start-column="0" selection-end-line="31" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dump_base_de_donnee/dump09022016/rfid_badgeuse_passage.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="56" selection-start-line="17" selection-start-column="0" selection-end-line="30" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dump_base_de_donnee/dump09022016/rfid_badgeuse_presence.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+        <state relative-caret-position="1020">
+          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/BuildDatabase.sql">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClientNodeJs/passport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/moteur/ConnectionBD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClientNodeJs/passport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/moteur/ConnectionBD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClientNodeJs/passport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/moteur/ConnectionBD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dump_base_de_donnee/dump09022016/rfid_badgeuse_cours.sql" />
+    <entry file="file://$PROJECT_DIR$/Dump_base_de_donnee/dump09022016/rfid_badgeuse_eleve.sql" />
+    <entry file="file://$PROJECT_DIR$/Dump_base_de_donnee/dump09022016/rfid_badgeuse_passage.sql" />
+    <entry file="file://$PROJECT_DIR$/Dump_base_de_donnee/dump09022016/rfid_badgeuse_presence.sql" />
+    <entry file="file://$PROJECT_DIR$/script/BuildDatabase.sql">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="63" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="63" />
           <folding />
         </state>
       </provider>
