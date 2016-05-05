@@ -6,13 +6,14 @@
 -- Généré le : mar 02 Mai 2015
 -- Version du serveur : 5.6.20-log
 
-
+SET SQL_MODE = " NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 --
 -- Base de donnée rfid_badgeuse
 --
 
-CREATE DATABASE IF  NOT EXISTS `rfid_badgeuse` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF  NOT EXISTS 'rfid_badgeuse' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE rfid_badgeuse;
 --
