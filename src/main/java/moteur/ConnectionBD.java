@@ -18,8 +18,8 @@ public class ConnectionBD
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("Driver O.K.");
 		
-		url = "jdbc:mysql://localhost:3306/rfid_actuel";
-		connection = DriverManager.getConnection(url,"root","");
+		url = "jdbc:mysql://localhost:3306/rfid_badgeuse";
+		connection = DriverManager.getConnection(url,"root","jullyetgege");
 		System.out.println("Connection fonctionnelle !");
 		}catch (Exception e) {
 			e.printStackTrace();
