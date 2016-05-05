@@ -10,6 +10,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Rest</servlet-name>
-    <url-pattern>/badgeuse/*</url-pattern>
+    <url-pattern>/scan</url-pattern>
   </servlet-mapping>
 </web-app>

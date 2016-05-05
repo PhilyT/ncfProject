@@ -26,7 +26,7 @@ app.get('/scantest', function(req, res)
 {
 	if (t == null) 
 	{
-		var adr = "http://localhost:8080/badgeuse/scan";
+		var adr = "http://localhost:8080/scan";
 		var http = new XMLHttpRequest();
 		
 		http.open("GET", adr, true);

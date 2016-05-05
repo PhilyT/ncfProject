@@ -1,5 +1,7 @@
 package main.java.service;
 
+import main.java.moteur.ReadCard;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -8,22 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import main.java.moteur.ReadCard;
-
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-@Path("/badgeuse")
+
 public class Rest extends HttpServlet
 {	
-	@GET
-    @Path("/scan")
-    @Produces(MediaType.TEXT_PLAIN)
-	public String scanCard(@PathParam("rs") String rs)
+	/*@GET
+    @Produces(MediaType.APPLICATION_JSON)
+	public HttpServletResponse scanCard() throws JSONException
 	{
-		/*ReadCard readeur = new ReadCard();
+		ReadCard readeur = new ReadCard();
 		try
 		{
 			String reponse = readeur.read();
@@ -33,22 +30,24 @@ public class Rest extends HttpServlet
 		catch(Exception e)
 		{
 			e.printStackTrace();
-		}*/
-		return "Salut";
-	}
+		}		
+	}*/
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-		
+		try {
+			setResponse(response);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 	
-	private Response sendResponse(int status, String entity, String methode){
-        return Response
-                .status(status)
-                .entity(entity)
-                .header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With")
-                .header("Access-Control-Allow-Methods", methode)
-                .build();
+	private void setResponse(HttpServletResponse response) throws JSONException, IOException{
+		JSONObject json = new JSONObject();
+        json.put("test", "salut");
+        response.setStatus(200);
+        response.setContentType("application/json");
+        response.getWriter().write(json.toString());
     }
 }
