@@ -86,10 +86,10 @@ public class ConnectionBD
 			
 			while(result.next()){
 				Eleve unEleve = new Eleve(); // Nouvelle instance
-		        
+		        unEleve.setId(result.getInt("id"));
 				unEleve.setPrenom(result.getString("prenom")); 
 				unEleve.setNom(result.getString("nom")); 
-				unEleve.setIdCarte(result.getInt("idCarte"));
+				unEleve.setIdCarte(result.getString("idCarte"));
 		 
 				res.add(unEleve); 
 			}
@@ -103,6 +103,36 @@ public class ConnectionBD
 		return res;
 	}
 	
+	public Eleve getEtudiant(String idCard) throws SQLException
+	{
+		Eleve res = new Eleve();
+		ResultSet result;
+		String requete = "SELECT * FROM eleve WHERE idCarte = " + idCard;
+		Statement stmt = null;
+		
+		try 
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			
+			while(result.next()){
+				Eleve unEleve = new Eleve(); // Nouvelle instance
+				unEleve.setId(result.getInt("id"));
+				unEleve.setPrenom(result.getString("prenom")); 
+				unEleve.setNom(result.getString("nom")); 
+				unEleve.setIdCarte(result.getString("idCarte"));
+		 
+				res = unEleve; 
+			}
+		}
+		catch (SQLException e)
+		{
+			
+		} finally {
+			stmt.close();
+		}
+		return res;
+	}
 	
 	public ArrayList<Passage> getPassage() throws SQLException
 	{

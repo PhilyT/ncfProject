@@ -1,3 +1,4 @@
+main\java\service\ScanPassage.class
 main\java\moteur\ConnectionBD.class
 main\java\models\PresenceEnum.class
 main\java\moteur\ReadCard.class
@@ -5,5 +6,5 @@ main\java\models\Cours.class
 main\java\moteur\main.class
 main\java\models\Eleve.class
 main\java\models\Presence.class
-main\java\service\Rest.class
 main\java\models\Passage.class
+main\java\service\GetCours.class

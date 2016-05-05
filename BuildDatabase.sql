@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `eleve` (
   `prenom` varchar(45) NOT NULL,
   `id_historisation` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
-  `idCarte` int(11) NOT NULL,
+  `idCarte` varchar(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

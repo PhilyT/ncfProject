@@ -5,10 +5,10 @@ public class Eleve {
 	private int id;
 	private String prenom;
 	private String nom;
-	private int idCarte;
+	private String idCarte;
 	
 	public Eleve() {}
-	public Eleve(int id, String prenom, String nom, int idCarte)
+	public Eleve(int id, String prenom, String nom, String idCarte)
 	{
 		this.id = id;
 		this.prenom = prenom;
@@ -31,7 +31,7 @@ public class Eleve {
 		return nom;
 	}
 	
-	public int getIdCarte()
+	public String getIdCarte()
 	{
 		return idCarte;
 	}
@@ -51,7 +51,7 @@ public class Eleve {
 		this.nom = nom;
 	}
 	
-	public void setIdCarte(int idCarte)
+	public void setIdCarte(String idCarte)
 	{
 		this.idCarte = idCarte;
 	}

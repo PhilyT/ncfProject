@@ -5,11 +5,19 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
    version="2.5">
   <servlet>
-    <servlet-name>Rest</servlet-name>
-    <servlet-class>main.java.service.Rest</servlet-class>
+    <servlet-name>ScanPassage</servlet-name>
+    <servlet-class>main.java.service.ScanPassage</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetCours</servlet-name>
+    <servlet-class>main.java.service.GetCours</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Rest</servlet-name>
+    <servlet-name>ScanPassage</servlet-name>
     <url-pattern>/scan</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetCours</servlet-name>
+    <url-pattern>/cours</url-pattern>
   </servlet-mapping>
 </web-app>

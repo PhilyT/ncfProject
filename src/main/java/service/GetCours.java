@@ -1,7 +1,6 @@
 package main.java.service;
 
 import main.java.moteur.ReadCard;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -10,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-
-public class Rest extends HttpServlet
-{		
+public class GetCours extends HttpServlet
+{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 		try {
@@ -26,34 +26,21 @@ public class Rest extends HttpServlet
 		}
     }
 	
-	private void setResponse(HttpServletResponse response) throws JSONException, IOException{
-		
+	private void setResponse(HttpServletResponse response) throws JSONException, IOException
+	{
 		JSONObject json = new JSONObject();
-		ReadCard reader = new ReadCard();
-		String idCard = "";
-		try
-		{
-			reader.read();
-			idCard = reader.getIdResult();
-			if(idCard.equals("No card detected!"))
-			{
-				json.put("etat", idCard);
-				json.put("user", "");
-			}
-			else
-			{
-				json.put("etat", "success");
-				json.put("user", idCard);
-			}
-		}
-		catch(Exception e)
-		{
-			idCard = "Erreur lecture Card";
-			json.put("etat", idCard);
-			json.put("user", "");
-		}
-        response.setStatus(200);
+		JSONArray ja = new JSONArray();
+		JSONObject cour1 = new JSONObject();
+		cour1.put("id_c", "1");
+		cour1.put("libelle", "Cour1");
+		JSONObject cour2 = new JSONObject();
+		cour2.put("id_c", "2");
+		cour2.put("libelle", "Cour2");
+		ja.put(cour1);
+		ja.put(cour2);
+		json.put("Cours", ja);
+		response.setStatus(200);
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
-    }
+	}
 }
