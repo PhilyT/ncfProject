@@ -108,7 +108,7 @@ public class ConnectionBD
 	{
 		Eleve res = null;
 		ResultSet result;
-		String requete = "SELECT * FROM eleve WHERE idCarte = " + idCard + ";";
+		String requete = "SELECT * FROM eleve WHERE idCarte = '" + idCard + "';";
 		Statement stmt = null;
 		
 		try 
@@ -128,7 +128,7 @@ public class ConnectionBD
 		}
 		catch (SQLException e)
 		{
-			System.out.println(e.getMessage());
+			System.out.println(e);
 		} finally {
 			stmt.close();
 		}
