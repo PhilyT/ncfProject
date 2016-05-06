@@ -7,15 +7,20 @@ public class Presence {
 	private int idCours;
 	private PresenceEnum presence;
 	private Date date;
-	private int idPassage;
 	
-	public Presence(int idEtud, int idCours, PresenceEnum presence, Date date, int idPassage )
+	public Presence(int idEtud, int idCours, PresenceEnum presence, Date date )
 	{
 		this.idEtud = idEtud;
 		this.idCours = idCours;
 		this.presence = presence;
 		this.date = date;
-		this.idPassage = idPassage;
+	}
+	
+	public Presence(int idEtud, int idCours, Date date )
+	{
+		this.idEtud = idEtud;
+		this.idCours = idCours;
+		this.date = date;
 	}
 	
 	public Presence()
@@ -43,11 +48,6 @@ public class Presence {
 		return date;
 	}
 	
-	public int getIdPassage()
-	{
-		return idPassage;
-	}
-	
 	public void setIdEtud(int idEtud)
 	{
 		this.idEtud = idEtud;
@@ -66,11 +66,6 @@ public class Presence {
 	public void setDate(Date date)
 	{
 		this.date = date;
-	}
-	
-	public void setIdPassage(int idPassage)
-	{
-		this.idPassage = idPassage;
 	}
 
 }

@@ -2,8 +2,11 @@ package main.java.models;
 
 public enum PresenceEnum {
 	
-	retard, present
+	retard ('r'), present('p');
 	
-	
+	PresenceEnum(char c)
+	{
+		
+	}
 
 }

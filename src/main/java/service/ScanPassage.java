@@ -1,10 +1,11 @@
 package main.java.service;
 
-import main.java.models.Eleve;
+import main.java.models.*;
 import main.java.moteur.ConnectionBD;
 import main.java.moteur.ReadCard;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,8 @@ public class ScanPassage extends HttpServlet
 			{
 				ConnectionBD maco = new ConnectionBD();
 				Eleve eleve = maco.getEtudiant(idCard);
+				Date date = new Date();
+				Cours cour = maco.getCourActuel((java.sql.Date)date);
 				if(eleve != null)
 				{
 					JSONObject eleveJson = new JSONObject();
@@ -53,7 +56,8 @@ public class ScanPassage extends HttpServlet
 					eleveJson.put("nom",eleve.getNom());
 					eleveJson.put("idCarte",eleve.getIdCarte());
 					json.put("etat", "success");
-					json.put("user", eleveJson.toString());
+					json.put("user", eleveJson.toString()); 
+					maco.updatePresence(new Presence(eleve.getId(), cour.getId(), PresenceEnum.present,(java.sql.Date)date));;
 				}
 				else
 				{

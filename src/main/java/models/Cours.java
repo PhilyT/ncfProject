@@ -8,17 +8,15 @@ public class Cours
 	private Time heureDebut;
 	private Time heureFin;
 	private String libelle;
-	private String salle;
 	
 	public Cours(){}
 	
-	public Cours(int id_c, Time heureDebut, Time heureFin, String libelle, String salle)
+	public Cours(int id_c, Time heureDebut, Time heureFin, String libelle)
 	{
 		this.id_c = id_c;
 		this.heureDebut = heureDebut;
 		this.heureFin = heureFin;
 		this.libelle = libelle;
-		this.salle = salle;
 	}
 	
 	public int getId()
@@ -41,11 +39,6 @@ public class Cours
 		return libelle;
 	}
 	
-	public String getSalle()
-	{
-		return salle;
-	}
-	
 	public void setId(int id_c)
 	{
 		this.id_c = id_c;
@@ -66,8 +59,4 @@ public class Cours
 		this.libelle = libelle;
 	}
 	
-	public void setSalle(String salle)
-	{
-		this.salle = salle;
-	}
 }
