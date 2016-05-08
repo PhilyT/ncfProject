@@ -19,7 +19,7 @@ public class ConnectionBD
 		System.out.println("Driver O.K.");
 		
 		url = "jdbc:mysql://localhost:3306/rfid_badgeuse";
-		connection = DriverManager.getConnection(url,"root","jullyetgege");
+		connection = DriverManager.getConnection(url,"rfid","rfid");
 		System.out.println("Connection fonctionnelle !");
 		}catch (Exception e) {
 			e.printStackTrace();
