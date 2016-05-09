@@ -11,6 +11,8 @@
                    
 						<div class="alert alert-info" role="alert">  <h1 class="text-center"> Scanner votre carte </h1> </div>
                         <form method="post" action="/badgeetudiant">
+                            <% if(etat.test = "success") {%>
+                                <p>Etudiant : <%test.user.prenom %></p>
                             <p><%= test %></p>
                             <input type="submit" value="lecture" class="btn btn-info btn-block"/>
                         </form>
