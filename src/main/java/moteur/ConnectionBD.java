@@ -1,8 +1,12 @@
 package main.java.moteur;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
+
 import main.java.models.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -170,6 +174,49 @@ public class ConnectionBD
 		return res;
 	}
 	
+	public Admin getAdministrateur(String email, String mdp) throws Exception
+	{
+		Admin res = null;
+		ResultSet result;
+		String requete = "SELECT * FROM administration WHERE mailAdmin = '" + email + "';";
+		Statement stmt = null;
+		try
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			while(result.next())
+			{
+				final MessageDigest sha512 = MessageDigest.getInstance("SHA-512");
+		        sha512.update(mdp.getBytes());
+		        
+		        String mdpencrypt = convertByteToHex(sha512.digest());
+				 
+				if(mdpencrypt == result.getString("mp"))
+				{
+					res = new Admin();
+					res.setEmail(result.getString("mailAdmin"));
+					res.setId(result.getInt("idAdmin"));
+					res.setMdp(result.getString("mp"));
+					res.setNom(result.getString("nomAdmin"));
+					res.setPrenom(result.getString("prenomAdmin"));
+				}
+				else
+				{
+					throw new Exception("Mauvais mot de passe.");
+				}
+			}
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e);
+		}
+		finally
+		{
+			stmt.close();
+		}
+		return res;
+	}
+	
 	public void insertCours( Cours cours) throws SQLException
 	{
 		Statement statement = connection.createStatement();
@@ -197,5 +244,14 @@ public class ConnectionBD
 		statement.executeUpdate("UPDATE presence SET presence = '" + presence.getPresence()
 				+ "' WHERE idEtud = '"+presence.getIdEtud()+"' AND idCours = '"+presence.getIdCours()+"' AND Date = '"+presence.getDate()+"';");
 	}
+	
+	public static String convertByteToHex(byte data[])
+    {
+        StringBuffer hexData = new StringBuffer();
+        for (int byteIndex = 0; byteIndex < data.length; byteIndex++)
+            hexData.append(Integer.toString((data[byteIndex] & 0xff) + 0x100, 16).substring(1));
+        
+        return hexData.toString();
+    }
 }
 
