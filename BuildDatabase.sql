@@ -56,6 +56,18 @@ CREATE TABLE IF NOT EXISTS `presence` (
   CONSTRAINT `presence_ibfk_2` FOREIGN KEY (`idEtud`) REFERENCES `eleve` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Table stucture for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `administration` (
+`idAdmin` int (11) NOT NULL,
+`nomAdmin` VARCHAR (50),
+`prenomAdmin` VARCHAR (50),
+`mp` VARCHAR (50),
+`mailAdmin` Varchar (50),
+PRIMARY key (`idAdmin`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
  GRANT SELECT,UPDATE,INSERT ON rfid_badgeuse.* TO 'rfid'@'localhost' IDENTIFIED BY 'rfid' WITH MAX_QUERIES_PER_HOUR 100000 MAX_UPDATES_PER_HOUR 10000 MAX_CONNECTIONS_PER_HOUR 10000 MAX_USER_CONNECTIONS 10000;
