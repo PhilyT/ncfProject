@@ -62,9 +62,12 @@ INSERT INTO cours VALUES('','14:00:00','17:00:00',"RFID");
 INSERT INTO eleve (prenom, nom, idCarte) VALUES('Tom','Phily','8B1D8B16');
 INSERT INTO eleve (prenom, nom, idCarte) VALUES('Marina','Helie-Zadeh','7B498C16');
 INSERT INTO eleve (prenom, nom, idCarte) VALUES('Stéphanie','Carrié','0BD09816');
-INSERT INTO presence (idEtud, idCours, Date) VALUES(1,1,'2016-05-09');
-INSERT INTO presence (idEtud, idCours, Date) VALUES(2,1,'2016-05-09');
-INSERT INTO administration (idAdmin, nomAdmin, prenomAdmin, mp, mailAdmin) VALUES ('', 'Carrié', 'Stéphanie', 'MMB4ubE3eiJ5WaXm5pUio8SNBHNVg2eLb04lbjhm9FnHd5XiTNXi3bxAB4wTajyvlO/QVt0yF2yxW5ZIbM2cWQ==','stephaniesmg@hotmail.fr');
+INSERT INTO presence (idEtud, idCours, Date) VALUES(1,1,'2016-05-10');
+INSERT INTO presence (idEtud, idCours, Date) VALUES(2,1,'2016-05-10');
+INSERT INTO presence (idEtud, idCours, Date) VALUES(1,2,'2016-05-10');
+INSERT INTO presence (idEtud, idCours, Date) VALUES(2,2,'2016-05-10');
+
+
 
 --
 -- Table stucture for table `admin`
@@ -79,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `administration` (
 PRIMARY key (`idAdmin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO administration (idAdmin, nomAdmin, prenomAdmin, mp, mailAdmin) VALUES ('', 'Carrié', 'Stéphanie', 'MMB4ubE3eiJ5WaXm5pUio8SNBHNVg2eLb04lbjhm9FnHd5XiTNXi3bxAB4wTajyvlO/QVt0yF2yxW5ZIbM2cWQ==','stephaniesmg@hotmail.fr');
 
  GRANT SELECT,UPDATE,INSERT ON rfid_badgeuse.* TO 'rfid'@'localhost' IDENTIFIED BY 'rfid' WITH MAX_QUERIES_PER_HOUR 100000 MAX_UPDATES_PER_HOUR 10000 MAX_CONNECTIONS_PER_HOUR 10000 MAX_USER_CONNECTIONS 10000;
  SET PASSWORD FOR 'rfid'@'localhost' = PASSWORD('rfid');
