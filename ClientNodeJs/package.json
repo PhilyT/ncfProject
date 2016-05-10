@@ -13,11 +13,12 @@
   "license": "LPSIL IDSE",
   "dependencies": {
     "body-parser": "^1.14.2",
-    "xhr2": "*",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
+    "jimp": "^0.2.24",
     "log4js": "^0.6.29",
     "morgan": "^1.6.1",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "xhr2": "*"
   }
 }

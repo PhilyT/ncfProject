@@ -29,6 +29,25 @@ app.get('/badgeetudiant', function (req, res)
 {
 	res.render('badgeetudiant', {etat:""});
 });
+app.get('/admin', function(req, res){
+    res.render('admin');
+});
+app.get('/gestionE', function(req, res){
+    res.render('gestionE');
+});
+app.get('/gestionC', function(req, res){
+    res.render('gestionC');
+});
+
+app.get('/iut.png', function(req, res){
+    res.sendFile('img/iut.png', { root:__dirname });
+});
+app.get('/unice.png', function(req, res){
+    res.sendFile('img/unice.png', { root: __dirname });
+});
+app.get('/badgeuse.png', function(req, res){
+    res.sendFile('img/badgeuse.png', { root: __dirname });
+});
 
 app.post('/badgeetudiant', function (req, res)
 {
