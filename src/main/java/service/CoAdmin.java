@@ -32,6 +32,8 @@ public class CoAdmin extends HttpServlet
 	
 	private void setResponse(HttpServletResponse response, String email, String mdp) throws JSONException, IOException, ClassNotFoundException, SQLException
 	{
+		System.out.println(email);
+		System.out.println(mdp);
 		JSONObject json = new JSONObject();
 		ConnectionBD maco = new ConnectionBD();
 		try
@@ -40,6 +42,7 @@ public class CoAdmin extends HttpServlet
 			if(admin == null)
 			{
 				json.put("etat", "Utilisateur inconue.");
+				json.put("user", "");
 				response.setStatus(200);
 		        response.setContentType("application/json");
 		        response.getWriter().write(json.toString());
@@ -60,6 +63,7 @@ public class CoAdmin extends HttpServlet
 		catch(Exception e)
 		{
 			json.put("etat", "Mauvais mot de passe.");
+			json.put("user", "");
 			response.setStatus(200);
 	        response.setContentType("application/json");
 	        response.getWriter().write(json.toString());
