@@ -13,8 +13,8 @@
     <servlet-class>main.java.service.GetCours</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>PostCoAdmin</servlet-name>
-    <servlet-class>main.java.service.PostCoAdmin</servlet-class>
+    <servlet-name>CoAdmin</servlet-name>
+    <servlet-class>main.java.service.CoAdmin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ScanPassage</servlet-name>
@@ -25,7 +25,7 @@
     <url-pattern>/cours</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>PostCoAdmin</servlet-name>
+    <servlet-name>CoAdmin</servlet-name>
     <url-pattern>/co_admin</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -14,11 +14,11 @@
 
                             <input type="submit" value="lecture" class="btn btn-info btn-block"/>
                         </form>
-                        <% if(test != ''){ %>
-                        <% if(test.etat = "success") {%>
-                            <p>Etudiant : <%= test %></p>
-                        <% } else {%>
-                            <p><%= test.etat %></p>
+                        <% if(etat != ""){ %>
+                            <% if(etat == "success") {%>
+                                <p>Etudiant : <%= prenom %> <%= nom %></p>
+                            <% } else {%>
+                                <p><%= etat %></p>
                         <% }} %>
                     	<a href="/login"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                     </div>

@@ -11,7 +11,7 @@ import org.codehaus.jettison.json.JSONException;
 
 import main.java.models.*;
 
-public class PostCoAdmin extends HttpServlet
+public class CoAdmin extends HttpServlet
 {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

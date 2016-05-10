@@ -50,6 +50,7 @@ public class ScanPassage extends HttpServlet
 				java.util.Date date = new java.util.Date();
 				Date dateActuel = new Date(date.getTime());
 				Cours cour = maco.getCourActuel(date);
+				System.out.println(eleve.getPrenom());
 				if(eleve != null)
 				{
 					JSONObject eleveJson = new JSONObject();
