@@ -4,3 +4,4 @@ target
 .classpath
 .idea
 .settings
+ClientNodeJs/node_modules/
