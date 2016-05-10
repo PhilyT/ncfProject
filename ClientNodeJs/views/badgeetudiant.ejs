@@ -14,9 +14,9 @@
 
                             <input type="submit" value="lecture" class="btn btn-info btn-block"/>
                         </form>
-                        <% if(etat != ""){ %>
+                        <div class="alert alert-info" role="succes"> <% if(etat != ""){ %>
                             <% if(etat == "success") {%>
-                                <p>Etudiant : <%= prenom %> <%= nom %></p>
+                            <div class="alert alert-info" role="succes"> <h1>Etudiant : <%= prenom %> <%= nom %></h1> </div>
                             <% } else {%>
                                 <p><%= etat %></p>
                         <% }} %>
