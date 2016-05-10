@@ -64,6 +64,7 @@ INSERT INTO eleve (prenom, nom, idCarte) VALUES('Marina','Helie-Zadeh','7B498C16
 INSERT INTO eleve (prenom, nom, idCarte) VALUES('Stéphanie','Carrié','0BD09816');
 INSERT INTO presence (idEtud, idCours, Date) VALUES(1,1,'2016-05-09');
 INSERT INTO presence (idEtud, idCours, Date) VALUES(2,1,'2016-05-09');
+INSERT INTO administration (idAdmin, nomAdmin, prenomAdmin, mp, mailAdmin) VALUES ('', 'Carrié', 'Stéphanie', 'MMB4ubE3eiJ5WaXm5pUio8SNBHNVg2eLb04lbjhm9FnHd5XiTNXi3bxAB4wTajyvlO/QVt0yF2yxW5ZIbM2cWQ==','stephaniesmg@hotmail.fr');
 
 --
 -- Table stucture for table `admin`
