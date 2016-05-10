@@ -12,11 +12,11 @@
 						<div class="alert alert-info" role="alert">  <h1 class="text-center"> Scanner votre carte </h1> </div>
                         <form method="post" action="/badgeetudiant">
 
-                            <input type="submit" value="lecture" class="btn btn-info btn-block"/>
+                            <input type="submit" value="lecture" class="btn btn-info btn-block"/> <br />
                         </form>
                          <% if(etat != ""){ %>
                             <% if(etat == "success") {%>
-                            <div class="alert alert-success" role="alert"> <h1>Etudiant : <%= prenom %> <%= nom %></h1> </div>
+                            <div class="alert alert-success" role="alert"> <h1>Etudiant : <%= prenom %> <%= nom %> présent</h1> </div>
                             <% } else {%>
                                 <p><%= etat %></p>
                         <% }} %>
