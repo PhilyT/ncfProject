@@ -9,7 +9,7 @@
                         <h1 class="panel-title"><strong>Connectez-vous  </strong></h1>
                     </div>
                     <div class="panel-body">
-                      <form method="post" action="/login">
+                      <form method="post" action="/loginprof">
                        
                           <div class="form-group">
                           <label for="email">Votre Email</label>
@@ -17,10 +17,13 @@
                           </div>
                           <div class="form-group">
                           <label for="pwd">Mot de passe </label>
-                          <input type="password" class="form-control" id="password" name="password" placeholder="Saisir votre mot de passe" aria-required="required" pattern="[a-zA-Z0-9]{6,8}" title="Le mot de passe doit contenir de 6 à 8 caractères alphanumériques" required>
+                          <input type="password" class="form-control" id="password" name="password" placeholder="Saisir votre mot de passe" aria-required="required" title="Le mot de passe doit contenir de 6 à 8 caractères alphanumériques" required>
                            </div>
                            <input type="submit" value="Connexion" class="btn btn-info btn-block">
                       </form>
+                      <% if(etat != ""){ %>
+                            <p><%= etat %></p>
+                        <% } %>
                        <a href="/login"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                     </div>
                 </div>

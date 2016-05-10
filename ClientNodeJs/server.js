@@ -27,14 +27,7 @@ app.get('/login', function(req, res){
 
 app.get('/badgeetudiant', function (req, res)
 {
-	if (req.query.lecture != null) 
-	{
-		res.render('badgeetudiant', {test:req.query.lecture});
-	}
-	else
-	{
-		res.render('badgeetudiant', {test:""});
-	}
+	res.render('badgeetudiant', {etat:""});
 });
 app.get('/admin', function(req, res){
     res.render('admin');
@@ -69,10 +62,13 @@ app.post('/badgeetudiant', function (req, res)
 		{
 			if (http.status == 200) 
 			{
-				//t=JSON.parse(http.responseText).test;
-				t = http.responseText;
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
 				logger.info("t : ", t);
-				res.redirect('/badgeetudiant/?lecture=' + t);
+				logger.info("etat : ", t.etat);
+				logger.info("user : ", t.user);
+				logger.info("prenom : ", JSON.parse(t.user).prenom);
+				res.render('badgeetudiant', {etat:t.etat, prenom:JSON.parse(t.user).prenom, nom:JSON.parse(t.user).nom});
 			}
 			else
 			{
@@ -85,7 +81,43 @@ app.post('/badgeetudiant', function (req, res)
 });
 
 app.get('/loginprof', function (req,res){
-	res.render('loginprof');
+	res.render('loginprof', {etat:""});
+});
+
+app.post('/loginprof', function (req,res){
+	var t;
+	var adr = "http://localhost:8080/co_admin?email="+req.body.email+"&?mdp="+req.body.password;
+	var http = new XMLHttpRequest();
+		
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				logger.info("user : ", t.user);
+				if (t.etat != '') 
+				{
+					res.render('loginprof', {etat:t.etat});
+				}
+				else
+				{
+					logger.info("prenom : ", JSON.parse(t.user).prenom);
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
 });
 
 app.listen(1414);

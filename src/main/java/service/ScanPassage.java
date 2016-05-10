@@ -5,12 +5,13 @@ import main.java.moteur.ConnectionBD;
 import main.java.moteur.ReadCard;
 
 import java.io.IOException;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -46,8 +47,10 @@ public class ScanPassage extends HttpServlet
 			{
 				ConnectionBD maco = new ConnectionBD();
 				Eleve eleve = maco.getEtudiant(idCard);
-				Date date = new Date();
-				Cours cour = maco.getCourActuel((java.sql.Date)date);
+				java.util.Date date = new java.util.Date();
+				Date dateActuel = new Date(date.getTime());
+				Cours cour = maco.getCourActuel(date);
+				System.out.println(eleve.getPrenom());
 				if(eleve != null)
 				{
 					JSONObject eleveJson = new JSONObject();
@@ -57,7 +60,11 @@ public class ScanPassage extends HttpServlet
 					eleveJson.put("idCarte",eleve.getIdCarte());
 					json.put("etat", "success");
 					json.put("user", eleveJson.toString()); 
-					maco.updatePresence(new Presence(eleve.getId(), cour.getId(), PresenceEnum.present,(java.sql.Date)date));;
+					System.out.println(cour.getId());
+					System.out.println(dateActuel);
+					System.out.println(eleve.getId());
+					System.out.println(eleve.getIdCarte());
+					maco.updatePresence(new Presence(eleve.getId(), cour.getId(), PresenceEnum.present, dateActuel));;
 				}
 				else
 				{
