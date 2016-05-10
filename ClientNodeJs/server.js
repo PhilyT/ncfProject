@@ -27,9 +27,13 @@ app.get('/login', function(req, res){
 
 app.get('/badgeetudiant', function (req, res)
 {
-	if (req.query.lecture != null) 
+	if (req.query.lecture != null)
 	{
-		res.render('badgeetudiant', {test:req.query.lecture});
+		var rendu = new Object();
+		rendu.etat = req.query.lecture.etat;
+		rendu.user = new Object();
+		rendu.user.prenom = req.query.lecture.user.prenom;
+		res.render('badgeetudiant', {test:rendu});
 	}
 	else
 	{
@@ -50,10 +54,10 @@ app.post('/badgeetudiant', function (req, res)
 		{
 			if (http.status == 200) 
 			{
-				//t=JSON.parse(http.responseText).test;
-				t = http.responseText;
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
 				logger.info("t : ", t);
-				res.redirect('/badgeetudiant/?lecture=' + t);
+				res.render('badgeetudiant', {test:t});
 			}
 			else
 			{

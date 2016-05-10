@@ -58,11 +58,11 @@ public class ConnectionBD
 		return res;
 	}
 	
-	public Cours getCourActuel(Date date) throws SQLException
+	public Cours getCourActuel(java.util.Date date) throws SQLException
 	{
 		Cours res = new Cours();
 		ResultSet result;
-		String requete = "SELECT * FROM cours WHERE heureDebut <= '" + date.getTime() + "' AND heureFin >= '" + date.getTime() + "';";
+		String requete = "SELECT * FROM cours WHERE heureDebut <= '" + new Time(date.getTime()) + "' AND heureFin >= '" + new Time(date.getTime()) + "';";
 		Statement stmt = null;
 		
 		try 
@@ -241,8 +241,8 @@ public class ConnectionBD
 	public void updatePresence(Presence presence)throws SQLException
 	{
 		Statement statement = connection.createStatement();
-		statement.executeUpdate("UPDATE presence SET presence = '" + presence.getPresence()
-				+ "' WHERE idEtud = '"+presence.getIdEtud()+"' AND idCours = '"+presence.getIdCours()+"' AND Date = '"+presence.getDate()+"';");
+		statement.executeUpdate("UPDATE presence SET presence.presence = 'p'" 
+				+ " WHERE idEtud = "+presence.getIdEtud()+" AND idCours = "+presence.getIdCours()+" AND Date = '"+presence.getDate()+"';");
 	}
 	
 	public static String convertByteToHex(byte data[])
