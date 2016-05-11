@@ -223,13 +223,28 @@ public class ConnectionBD
 		statement.executeUpdate("INSERT INTO cours (heureDebut, heureFin, libelle) "
 				+  "VALUES ('"+cours.getHeureDebut()+"','"+cours.getHeureFin()+"', '"+cours.getLibelle()+"');");
 	}
-	
+	public void updateHeuretCours (Cours cours) throws SQLException
+	{
+		Statement statement = connection.createStatement();
+		statement.executeUpdate("UPDATE cours set heureDebut ='"
+		+ cours.getHeureDebut()+"', heureFin='"+cours.getHeureFin()+"' where id_c ="+cours.getId()+";");
+	}
+	public void  deleteCours (Cours cours) throws SQLException
+	{
+		Statement statement = connection.createStatement();
+		statement.executeUpdate("DELETE cours where id_c ='" + cours.getId()+"';");
+	}
 	public void insertEtudiants(Eleve eleve) throws SQLException
 	{
 		Statement statement = connection.createStatement();
 		statement.executeUpdate("INSERT INTO eleve (prenom, nom, idCarte) " 
 				+ "VALUES ('"+eleve.getPrenom()+"', '"+eleve.getNom()+"','" +eleve.getIdCarte()+"')");
 	}
+	//public void updateEtudiant (Eleve eleve) throws SQLException
+	//{
+	//	Statement statement = connection.createStatement();
+	//	statement.executeUpdate("UPDATE eleve set nom = '"+eleve.getNom()+"', prenom = '"+eleve.getPrenom()+"',"id)
+	//}
 	
 	public void insertPresence(Presence presence) throws SQLException
 	{
@@ -244,7 +259,7 @@ public class ConnectionBD
 		statement.executeUpdate("UPDATE presence SET presence.presence = 'p'" 
 				+ " WHERE idEtud = "+presence.getIdEtud()+" AND idCours = "+presence.getIdCours()+" AND Date = '"+presence.getDate()+"';");
 	}
-	
+
 	public static String convertByteToHex(byte data[])
     {
         StringBuffer hexData = new StringBuffer();
