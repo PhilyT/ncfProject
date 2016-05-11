@@ -166,6 +166,39 @@ app.get('/ajoutC', function(req, res){
 		res.redirect('/loginprof');
 	}
 });
+app.post('/ajoutC', function (req,res){
+	var t;
+	var adr = "http://localhost:8080/add_cour?libelle="+req.body.libelleC+"&dateDebut="+req.body.heureDeb+"&dateFin="+req.body.heureFin;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.render('ajoutC', {etat:t.etat});
+				}
+				else
+				{
+					res.redirect('/listeC');
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
+});
 app.get("/listeE", function(req, res)
 {
 	if (admin != null) 
