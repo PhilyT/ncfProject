@@ -17,6 +17,9 @@ public class AddPresence extends HttpServlet
 {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+		String id_c = request.getParameter("idc");
+		String idEtud = request.getParameter("ide");
+		String date = request.getParameter("date");
 		try {
 			setResponse(response);
 		} catch (Exception e) {
