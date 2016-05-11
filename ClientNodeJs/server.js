@@ -86,9 +86,9 @@ app.get('/loginprof', function (req,res){
 
 app.post('/loginprof', function (req,res){
 	var t;
-	var adr = "http://localhost:8080/co_admin?email="+req.body.email+"&?mdp="+req.body.password;
+	logger.info("password : ", req.body.password);
+	var adr = "http://localhost:8080/co_admin?email="+req.body.email+"&mdp="+req.body.password;
 	var http = new XMLHttpRequest();
-		
 	http.open("GET", adr, true);
 	http.onreadystatechange = function()
 	{

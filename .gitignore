@@ -2,11 +2,8 @@ bin
 target
 .project
 .classpath
-<<<<<<< HEAD
-.idea
+.idea/*
 .settings
-ClientNodeJs/node_modules/
-=======
-.idea/
-.settings/
->>>>>>> 0de0d237c66da2605c770eb4156fcba65d8abc1e
+ClientNodeJs/node_modules/*
+ClientNodeJs/node_modules
+.idea
