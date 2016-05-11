@@ -1,6 +1,8 @@
 package main.java.service;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,33 +13,51 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+import main.java.models.Cours;
+import main.java.moteur.ConnectionBD;
+
 public class GetCours extends HttpServlet
 {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 		try {
 			setResponse(response);
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
 	
-	private void setResponse(HttpServletResponse response) throws JSONException, IOException
+	private void setResponse(HttpServletResponse response) throws JSONException, IOException, ClassNotFoundException
 	{
 		JSONObject json = new JSONObject();
 		JSONArray ja = new JSONArray();
-		JSONObject cour1 = new JSONObject();
-		cour1.put("id_c", "1");
-		cour1.put("libelle", "Cour1");
-		JSONObject cour2 = new JSONObject();
-		cour2.put("id_c", "2");
-		cour2.put("libelle", "Cour2");
-		ja.put(cour1);
-		ja.put(cour2);
-		json.put("Cours", ja);
-		response.setStatus(200);
-        response.setContentType("application/json");
-        response.getWriter().write(json.toString());
+		try
+		{
+			ConnectionBD maco = new ConnectionBD();
+			ArrayList<Cours> cours = maco.getCours();
+			for	(int i = 0; i < cours.size(); i++)
+			{
+				JSONObject jsonCour = new JSONObject();
+				jsonCour.put("id_c", cours.get(i).getId());
+				jsonCour.put("heureDebut", cours.get(i).getHeureDebut());
+				jsonCour.put("heureFin", cours.get(i).getHeureFin());
+				jsonCour.put("libelle", cours.get(i).getLibelle());
+				ja.put(jsonCour);
+			}
+			json.put("etat", "success");
+			json.put("Cours", ja);
+			response.setStatus(200);
+	        response.setContentType("application/json");
+	        response.getWriter().write(json.toString());
+		}
+		catch(SQLException e)
+		{
+			json.put("etat", "Erreur accès base de données !");
+			json.put("Cours", "");
+			response.setStatus(200);
+	        response.setContentType("application/json");
+	        response.getWriter().write(json.toString());
+		}
 	}
 }
