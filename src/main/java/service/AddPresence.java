@@ -21,14 +21,14 @@ public class AddPresence extends HttpServlet
 		String idEtud = request.getParameter("ide");
 		String date = request.getParameter("date");
 		try {
-			setResponse(response);
+			setResponse(response, id_c, idEtud, date);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
 	
-	private void setResponse(HttpServletResponse response) throws JSONException, IOException, ClassNotFoundException
+	private void setResponse(HttpServletResponse response, String id_c, String idEtud, String date) throws JSONException, IOException, ClassNotFoundException
 	{
 		JSONObject json = new JSONObject();
 		try

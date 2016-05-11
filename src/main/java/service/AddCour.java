@@ -37,8 +37,8 @@ public class AddCour extends HttpServlet
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
-			Time hDebut = new Time(Date.parse(heureDebut));
-			Time hFin = new Time(Date.parse(heureFin));
+			Time hDebut = new Time(Time.parse(heureDebut+":00"));
+			Time hFin = new Time(Time.parse(heureFin+":00"));
 			Cours cour = new Cours();
 			cour.setHeureDebut(hDebut);
 			cour.setHeureFin(hFin);
