@@ -48,7 +48,14 @@ app.get('/gestionE', function(req, res){
 	}
 });
 app.get('/ajoutE', function(req, res){
-	res.render('ajoutE');
+	if (admin != null) 
+	{
+		res.render('ajoutE');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
 });
 app.get('/gestionC', function(req, res){
 	if (admin != null) 
@@ -59,6 +66,12 @@ app.get('/gestionC', function(req, res){
 	{
 		res.redirect('/loginprof');
 	}
+});
+
+app.get("/logout", function(req, res)
+{
+	admin = null;
+	res.redirect('/login');
 });
 
 app.get('/iut.png', function(req, res){
