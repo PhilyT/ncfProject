@@ -30,6 +30,7 @@ app.get('/badgeetudiant', function (req, res)
 	res.render('badgeetudiant', {etat:""});
 });
 app.get('/admin', function(req, res){
+	logger.info(req.user);
     res.render('admin');
 });
 app.get('/gestionE', function(req, res){
@@ -101,13 +102,14 @@ app.post('/loginprof', function (req,res){
 				logger.info("t : ", t);
 				logger.info("etat : ", t.etat);
 				logger.info("user : ", t.user);
-				if (t.etat != '') 
+				if (t.etat != 'success') 
 				{
 					res.render('loginprof', {etat:t.etat});
 				}
 				else
 				{
-					logger.info("prenom : ", JSON.parse(t.user).prenom);
+					res.user = JSON.parse(t.user);
+					res.redirect('/admin');
 				}
 			}
 			else
