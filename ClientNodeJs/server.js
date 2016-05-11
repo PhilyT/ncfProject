@@ -168,6 +168,7 @@ app.get('/ajoutC', function(req, res){
 });
 app.post('/ajoutC', function (req,res){
 	var t;
+	logger.info('time:', req.body.heureDeb);
 	var adr = "http://localhost:8080/add_cour?libelle="+req.body.libelleC+"&dateDebut="+req.body.heureDeb+"&dateFin="+req.body.heureFin;
 	var http = new XMLHttpRequest();
 	http.open("GET", adr, true);
