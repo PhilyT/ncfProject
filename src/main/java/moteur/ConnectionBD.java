@@ -233,7 +233,7 @@ public class ConnectionBD
 	public void  deleteCours (Cours cours) throws SQLException
 	{
 		Statement statement = connection.createStatement();
-		statement.executeUpdate("DELETE cours where id_c ='" + cours.getId()+"';");
+		statement.executeUpdate("DELETE FROM cours where id_c ='" + cours.getId()+"';");
 	}
 	public void insertEtudiants(Eleve eleve) throws SQLException
 	{
@@ -241,11 +241,17 @@ public class ConnectionBD
 		statement.executeUpdate("INSERT INTO eleve (prenom, nom, idCarte) " 
 				+ "VALUES ('"+eleve.getPrenom()+"', '"+eleve.getNom()+"','" +eleve.getIdCarte()+"')");
 	}
-	//public void updateEtudiant (Eleve eleve) throws SQLException
-	//{
-	//	Statement statement = connection.createStatement();
-	//	statement.executeUpdate("UPDATE eleve set nom = '"+eleve.getNom()+"', prenom = '"+eleve.getPrenom()+"',"id)
-	//}
+	public void updateEtudiant (Eleve eleve) throws SQLException
+	{
+		Statement statement = connection.createStatement();
+		statement.executeUpdate("UPDATE eleve set nom = '"+eleve.getNom()+"', prenom = '"+eleve.getPrenom()+"', id_historisation = idCarte , idCarte ='"+eleve.getIdCarte()+"'" +
+		"WHERE id ='"+eleve.getId()+"';");
+	}
+	public void deleteEtudiant (Eleve eleve) throws SQLException
+	{
+		Statement statement = connection.createStatement();
+		statement.executeUpdate("DELETE RROM eleve WHERE id = '"+eleve.getId()+"';");
+	}
 	
 	public void insertPresence(Presence presence) throws SQLException
 	{
