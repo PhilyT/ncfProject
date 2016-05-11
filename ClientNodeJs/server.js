@@ -4,18 +4,12 @@ var morgan = require('morgan'); // Charge le middleware de logging
 var logger = require('log4js').getLogger('Server');
 var bodyParser = require('body-parser');
 var XMLHttpRequest = require('xhr2');
-var flash = require('connect-flash');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
 var app = express();
 
 // config
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
-
-app.use(cookieParser());
-app.use(flash());
-app.use(session({ secret: 'cestunsecretoupas' })); // session secret
+var admin;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('combined')); // Active le middleware de logging
 app.use(express.static(__dirname + '/public')); // Indique que le dossier /public contient des fichiers statiques (middleware chargé de base)
@@ -34,8 +28,7 @@ app.get('/badgeetudiant', function (req, res)
 	res.render('badgeetudiant', {etat:""});
 });
 app.get('/admin', function(req, res){
-	logger.info(req.flash('admin'));
-	if (req.flash('admin')) 
+	if (admin != null) 
 	{
 		res.render('admin');
 	}
@@ -45,7 +38,7 @@ app.get('/admin', function(req, res){
 	}  
 });
 app.get('/gestionE', function(req, res){
-	if (req.flash('admin')) 
+	if (admin != null) 
 	{
 		res.render('gestionE');
 	}
@@ -55,7 +48,7 @@ app.get('/gestionE', function(req, res){
 	}
 });
 app.get('/gestionC', function(req, res){
-	if (req.flash('admin')) 
+	if (admin != null) 
 	{
 		res.render('gestionC');
 	}
@@ -107,7 +100,7 @@ app.post('/badgeetudiant', function (req, res)
 });
 
 app.get('/loginprof', function (req,res){
-	if (req.flash('admin')) 
+	if (admin != null) 
 	{
 		res.redirect('/admin');
 	}
@@ -140,7 +133,7 @@ app.post('/loginprof', function (req,res){
 				}
 				else
 				{
-					req.flash('admin', JSON.parse(t.user))
+					admin = JSON.parse(t.user);
 					res.redirect('/admin');
 				}
 			}
