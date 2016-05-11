@@ -1,20 +1,24 @@
+//package
 var express = require('express');
 var morgan = require('morgan'); // Charge le middleware de logging
 var logger = require('log4js').getLogger('Server');
 var bodyParser = require('body-parser');
 var XMLHttpRequest = require('xhr2');
+var flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var app = express();
 
 // config
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
+app.use(cookieParser());
+app.use(flash());
+app.use(session({ secret: 'cestunsecretoupas' })); // session secret
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('combined')); // Active le middleware de logging
-
 app.use(express.static(__dirname + '/public')); // Indique que le dossier /public contient des fichiers statiques (middleware chargé de base)
-
-logger.info('server start');
 
 // Route
 app.get('/', function(req, res){
@@ -30,14 +34,35 @@ app.get('/badgeetudiant', function (req, res)
 	res.render('badgeetudiant', {etat:""});
 });
 app.get('/admin', function(req, res){
-	logger.info(req.user);
-    res.render('admin');
+	logger.info(req.flash('admin'));
+	if (req.flash('admin')) 
+	{
+		res.render('admin');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}  
 });
 app.get('/gestionE', function(req, res){
-    res.render('gestionE');
+	if (req.flash('admin')) 
+	{
+		res.render('gestionE');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
 });
 app.get('/gestionC', function(req, res){
-    res.render('gestionC');
+	if (req.flash('admin')) 
+	{
+		res.render('gestionC');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
 });
 
 app.get('/iut.png', function(req, res){
@@ -82,7 +107,14 @@ app.post('/badgeetudiant', function (req, res)
 });
 
 app.get('/loginprof', function (req,res){
-	res.render('loginprof', {etat:""});
+	if (req.flash('admin')) 
+	{
+		res.redirect('/admin');
+	}
+	else
+	{
+		res.render('loginprof', {etat:""});
+	}
 });
 
 app.post('/loginprof', function (req,res){
@@ -108,7 +140,7 @@ app.post('/loginprof', function (req,res){
 				}
 				else
 				{
-					res.user = JSON.parse(t.user);
+					req.flash('admin', JSON.parse(t.user))
 					res.redirect('/admin');
 				}
 			}
@@ -123,3 +155,4 @@ app.post('/loginprof', function (req,res){
 });
 
 app.listen(1414);
+logger.info('server start');
