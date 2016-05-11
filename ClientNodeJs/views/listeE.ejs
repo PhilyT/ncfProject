@@ -10,7 +10,7 @@
                     </div>
                     <div class="panel-body">
                     <% for(var i = 0; i < etudiants.length; i++) { %>
-                        <p><%= etudiants[i].prenom %> <%= etudiants[i].nom %> <%= etudiants[i].historisation %> <%= etudiants[i].idCarte %></p>
+                        <div class="alert alert-primary" role="alert">   <div class="alert alert-success" role="alert"> <p> Prenom : <b><%= etudiants[i].prenom %>  </b> </p> </div> <div class="alert alert-danger" role="alert"> <p>Nom : <b><%= etudiants[i].nom %> </b></p> </div> <div class="alert alert-info" role="alert"> <p> Numéro ancienne carte : <b><%= etudiants[i].historisation %> </b> </p> </div> <div class="alert alert-warning" role="alert"> <p> Carte étudiante actuel : <b><%= etudiants[i].idCarte %> </b></p> </div> </div> <br />
                     <% } %>
                     <a href="/gestionE"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                     </div>

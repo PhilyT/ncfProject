@@ -10,7 +10,7 @@
                     </div>
                     <div class="panel-body">
                     <% for(var i = 0; i < cours.length; i++) { %>
-                        <p><%= cours[i].libelle %> <%= cours[i].heureDebut %> - <%= cours[i].heureFin %></p>
+                        <div class="alert alert-primary" role="alert"> <div class="alert alert-warning" role="alert"><p>Matière : <b><%= cours[i].libelle %> </b></p> </div> <div class="alert alert-success" role="alert"> <p> Heure de début : <b><%= cours[i].heureDebut %> </b> </p> </div> <div class="alert alert-danger" role="alert"><p> Heure de fin :  <b><%= cours[i].heureFin %>  </b></p></div> </div>
                     <% } %>
                     <a href="/gestionC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                     </div>
