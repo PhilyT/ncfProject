@@ -22,7 +22,7 @@
                            <input type="submit" value="Connexion" class="btn btn-info btn-block">
                       </form>
                       <% if(etat != ""){ %>
-                            <p><%= etat %></p>
+                        <br /> <div class="alert alert-danger" role="alert"> <p><%= etat %></p> </div>
                         <% } %>
                        <a href="/login"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                     </div>
