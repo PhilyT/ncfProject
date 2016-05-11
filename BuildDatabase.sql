@@ -35,9 +35,9 @@ CREATE TABLE IF NOT  EXISTS `cours` (
 CREATE TABLE IF NOT EXISTS `eleve` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `prenom` varchar(45) NOT NULL,
-  `id_historisation` VARCHAR (11),
+  `id_historisation` VARCHAR (45),
   `nom` varchar(45) NOT NULL,
-  `idCarte` varchar(11) NOT NULL UNIQUE,
+  `idCarte` varchar(45) NOT NULL UNIQUE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

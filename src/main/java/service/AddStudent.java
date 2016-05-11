@@ -53,6 +53,7 @@ public class AddStudent extends HttpServlet
 		catch(SQLException e)
 		{
 			json.put("etat", "Erreur accès base de données !");
+			System.out.println(e);
 			response.setStatus(200);
 	        response.setContentType("application/json");
 	        response.getWriter().write(json.toString());
