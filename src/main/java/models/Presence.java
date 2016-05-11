@@ -5,6 +5,9 @@ public class Presence {
 	
 	private int idEtud;
 	private int idCours;
+	private String libelle;
+	private String nomEtud;
+	private String prenomEtud;
 	private PresenceEnum presence;
 	private Date date;
 	
@@ -46,6 +49,36 @@ public class Presence {
 	public Date getDate()
 	{
 		return date;
+	}
+	
+	public String getLibelle()
+	{
+		return libelle;
+	}
+	
+	public String getNomEtud()
+	{
+		return nomEtud;
+	}
+	
+	public String getPrenomEtud()
+	{
+		return prenomEtud;
+	}
+	
+	public void setLibelle(String libelle)
+	{
+		this.libelle = libelle;
+	}
+	
+	public void setNomEtud(String nomEtud)
+	{
+		this.nomEtud = nomEtud;
+	}
+	
+	public void setPrenomEtud(String prenomEtud)
+	{
+		this.prenomEtud = prenomEtud;
 	}
 	
 	public void setIdEtud(int idEtud)
