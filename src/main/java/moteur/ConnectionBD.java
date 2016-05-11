@@ -189,9 +189,10 @@ public class ConnectionBD
 				final MessageDigest sha512 = MessageDigest.getInstance("SHA-512");
 		        sha512.update(mdp.getBytes());
 		        
-		        String mdpencrypt = convertByteToHex(sha512.digest());
-				 
-				if(mdpencrypt == result.getString("mp"))
+		        String mdpencrypt = convertByteToHex(sha512.digest()).toUpperCase();
+				System.out.println(mdpencrypt);
+				System.out.println(result.getString("mp"));
+				if(mdpencrypt.equals(result.getString("mp")))
 				{
 					res = new Admin();
 					res.setEmail(result.getString("mailAdmin"));
