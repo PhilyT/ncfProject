@@ -47,6 +47,9 @@ app.get('/gestionE', function(req, res){
 		res.redirect('/loginprof');
 	}
 });
+app.get('/ajoutE', function(req, res){
+	res.render('ajoutE');
+});
 app.get('/gestionC', function(req, res){
 	if (admin != null) 
 	{
