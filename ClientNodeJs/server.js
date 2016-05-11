@@ -119,6 +119,51 @@ app.get("/listeC", function(req, res)
 	}
 });
 
+app.get("/listeE", function(req, res)
+{
+	if (admin != null) 
+	{
+		var t;
+		var adr = "http://localhost:8080/etudiants";
+		var http = new XMLHttpRequest();
+			
+		http.open("GET", adr, true);
+		http.onreadystatechange = function()
+		{
+			if(http.readyState==4)
+			{
+				if (http.status == 200) 
+				{
+					t=JSON.parse(http.responseText);
+					//t = http.responseText;
+					logger.info("t : ", t);
+					logger.info("etat : ", t.etat);
+					logger.info("Etudiants : ", t.Etudiants);
+					logger.info("prenom 1 : ", t.Etudiants[0].prenom);
+					if (t.etat == "success") 
+					{
+						res.render('listeE', {etudiants:t.Etudiants});
+					}
+					else
+					{
+						logger.info("erreur d'obtention de la liste des etudiants");
+					}
+				}
+				else
+				{
+					logger.info('Status Page : ', http.status);
+					logger.info("erreur accès au service rest");
+				}
+			}
+		}
+		http.send(null);
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
+});
+
 app.get('/iut.png', function(req, res){
     res.sendFile('img/iut.png', { root:__dirname });
 });

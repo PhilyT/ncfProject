@@ -16,9 +16,17 @@
     <servlet-name>CoAdmin</servlet-name>
     <servlet-class>main.java.service.CoAdmin</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetEtud</servlet-name>
+    <servlet-class>main.java.service.GetStudents</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ScanPassage</servlet-name>
     <url-pattern>/scan</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetEtud</servlet-name>
+    <url-pattern>/etudiants</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetCours</servlet-name>

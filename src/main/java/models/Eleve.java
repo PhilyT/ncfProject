@@ -6,6 +6,7 @@ public class Eleve {
 	private String prenom;
 	private String nom;
 	private String idCarte;
+	private String historisation;
 	
 	public Eleve() {}
 	public Eleve(int id, String prenom, String nom, String idCarte)
@@ -36,6 +37,11 @@ public class Eleve {
 		return idCarte;
 	}
 	
+	public String getHistorisation()
+	{
+		return historisation;
+	}
+	
 	public void setId(int id)
 	{
 		this.id = id;
@@ -54,5 +60,10 @@ public class Eleve {
 	public void setIdCarte(String idCarte)
 	{
 		this.idCarte = idCarte;
+	}
+	
+	public void setHistorisation(String historisation)
+	{
+		this.historisation = historisation;
 	}
 }
