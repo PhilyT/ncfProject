@@ -156,7 +156,16 @@ app.get("/listeC", function(req, res)
 		res.redirect('/loginprof');
 	}
 });
-
+app.get('/ajoutC', function(req, res){
+	if (admin != null)
+	{
+		res.render('ajoutC');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
+});
 app.get("/listeE", function(req, res)
 {
 	if (admin != null) 
