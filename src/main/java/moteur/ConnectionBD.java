@@ -105,6 +105,7 @@ public class ConnectionBD
 				unEleve.setPrenom(result.getString("prenom")); 
 				unEleve.setNom(result.getString("nom")); 
 				unEleve.setIdCarte(result.getString("idCarte"));
+				unEleve.setHistorisation(result.getString("id_historisation"));
 				res.add(unEleve); 
 			}
 		}

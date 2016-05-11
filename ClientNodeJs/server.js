@@ -50,12 +50,45 @@ app.get('/gestionE', function(req, res){
 app.get('/ajoutE', function(req, res){
 	if (admin != null) 
 	{
-		res.render('ajoutE');
+		res.render('ajoutE', {etat:""});
 	}
 	else
 	{
 		res.redirect('/loginprof');
 	}
+});
+app.post('/ajoutE', function (req,res){
+	var t;
+	var adr = "http://localhost:8080/add_etud?nom="+req.body.nomE+"&prenom="+req.body.prenomE;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.render('ajoutE', {etat:t.etat});
+				}
+				else
+				{
+					res.redirect('/listeE');
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
 });
 app.get('/gestionC', function(req, res){
 	if (admin != null) 
@@ -72,6 +105,101 @@ app.get("/logout", function(req, res)
 {
 	admin = null;
 	res.redirect('/login');
+});
+
+app.get("/listeC", function(req, res)
+{
+	if (admin != null) 
+	{
+		var t;
+		var adr = "http://localhost:8080/cours";
+		var http = new XMLHttpRequest();
+			
+		http.open("GET", adr, true);
+		http.onreadystatechange = function()
+		{
+			if(http.readyState==4)
+			{
+				if (http.status == 200) 
+				{
+					t=JSON.parse(http.responseText);
+					//t = http.responseText;
+					logger.info("t : ", t);
+					logger.info("etat : ", t.etat);
+					logger.info("Cours : ", t.Cours);
+					logger.info("libelle 1 : ", t.Cours[0].libelle);
+					if (t.etat == "success") 
+					{
+						/*var c = new Object[t.Cours.length];
+						for(var i = 0; i<t.Cours.length; i++)
+						{
+							c[i].libelle = t.Cours[i].libelle;
+						}*/
+						res.render('listeC', {cours:t.Cours});
+					}
+					else
+					{
+						logger.info("erreur d'obtention de la liste des cours");
+					}
+				}
+				else
+				{
+					logger.info('Status Page : ', http.status);
+					logger.info("erreur accès au service rest");
+				}
+			}
+		}
+		http.send(null);
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
+});
+
+app.get("/listeE", function(req, res)
+{
+	if (admin != null) 
+	{
+		var t;
+		var adr = "http://localhost:8080/etudiants";
+		var http = new XMLHttpRequest();
+			
+		http.open("GET", adr, true);
+		http.onreadystatechange = function()
+		{
+			if(http.readyState==4)
+			{
+				if (http.status == 200) 
+				{
+					t=JSON.parse(http.responseText);
+					//t = http.responseText;
+					logger.info("t : ", t);
+					logger.info("etat : ", t.etat);
+					logger.info("Etudiants : ", t.Etudiants);
+					logger.info("prenom 1 : ", t.Etudiants[0].prenom);
+					if (t.etat == "success") 
+					{
+						res.render('listeE', {etudiants:t.Etudiants});
+					}
+					else
+					{
+						logger.info("erreur d'obtention de la liste des etudiants");
+					}
+				}
+				else
+				{
+					logger.info('Status Page : ', http.status);
+					logger.info("erreur accès au service rest");
+				}
+			}
+		}
+		http.send(null);
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
 });
 
 app.get('/iut.png', function(req, res){

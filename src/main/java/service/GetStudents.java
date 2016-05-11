@@ -13,10 +13,10 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-import main.java.models.Cours;
+import main.java.models.Eleve;
 import main.java.moteur.ConnectionBD;
 
-public class GetCours extends HttpServlet
+public class GetStudents extends HttpServlet 
 {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -35,18 +35,19 @@ public class GetCours extends HttpServlet
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
-			ArrayList<Cours> cours = maco.getCours();
-			for	(int i = 0; i < cours.size(); i++)
+			ArrayList<Eleve> eleves = maco.getEtudiants();
+			for	(int i = 0; i < eleves.size(); i++)
 			{
-				JSONObject jsonCour = new JSONObject();
-				jsonCour.put("id_c", cours.get(i).getId());
-				jsonCour.put("heureDebut", cours.get(i).getHeureDebut());
-				jsonCour.put("heureFin", cours.get(i).getHeureFin());
-				jsonCour.put("libelle", cours.get(i).getLibelle());
-				ja.put(jsonCour);
+				JSONObject jsonEleve = new JSONObject();
+				jsonEleve.put("id", eleves.get(i).getId());
+				jsonEleve.put("prenom", eleves.get(i).getPrenom());
+				jsonEleve.put("nom", eleves.get(i).getNom());
+				jsonEleve.put("historisation", eleves.get(i).getHistorisation());
+				jsonEleve.put("idCarte", eleves.get(i).getIdCarte());
+				ja.put(jsonEleve);
 			}
 			json.put("etat", "success");
-			json.put("Cours", ja);
+			json.put("Etudiants", ja);
 			response.setStatus(200);
 	        response.setContentType("application/json");
 	        response.getWriter().write(json.toString());
@@ -54,7 +55,7 @@ public class GetCours extends HttpServlet
 		catch(SQLException e)
 		{
 			json.put("etat", "Erreur accès base de données !");
-			json.put("Cours", "");
+			json.put("Etudiants", "");
 			response.setStatus(200);
 	        response.setContentType("application/json");
 	        response.getWriter().write(json.toString());
