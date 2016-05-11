@@ -3,6 +3,11 @@ package main.java.service;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Time;
+<<<<<<< HEAD
+=======
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+>>>>>>> e95dca1d95a64f387a3fd112eb749d0d3d62b15b
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,8 +41,12 @@ public class AddCour extends HttpServlet
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
-			Time hDebut = new Time(Time.parse(heureDebut+":00"));
-			Time hFin = new Time(Time.parse(heureFin+":00"));
+			SimpleDateFormat format = new SimpleDateFormat("HH:mm"); // 12 hour format
+
+		    java.util.Date d1 =(java.util.Date)format.parse(heureDebut);
+		    java.util.Date d2 =(java.util.Date)format.parse(heureFin);
+		    Time hDebut = new Time(d1.getTime());
+		    Time hFin = new Time(d1.getTime());
 			Cours cour = new Cours();
 			cour.setHeureDebut(hDebut);
 			cour.setHeureFin(hFin);
@@ -51,6 +60,12 @@ public class AddCour extends HttpServlet
 		catch(SQLException e)
 		{
 			json.put("etat", "Erreur accès base de données !");
+			response.setStatus(200);
+	        response.setContentType("application/json");
+	        response.getWriter().write(json.toString());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			json.put("etat", "Erreur de parsing de date !");
 			response.setStatus(200);
 	        response.setContentType("application/json");
 	        response.getWriter().write(json.toString());
