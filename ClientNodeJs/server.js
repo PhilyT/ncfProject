@@ -97,6 +97,11 @@ app.get("/listeC", function(req, res)
 					logger.info("libelle 1 : ", t.Cours[0].libelle);
 					if (t.etat == "success") 
 					{
+						/*var c = new Object[t.Cours.length];
+						for(var i = 0; i<t.Cours.length; i++)
+						{
+							c[i].libelle = t.Cours[i].libelle;
+						}*/
 						res.render('listeC', {cours:t.Cours});
 					}
 					else

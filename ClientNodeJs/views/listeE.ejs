@@ -1,0 +1,22 @@
+<% var title = 'Liste des Etudiants' %>
+<% include head %>
+<div class="container" >
+    <div class="row centered-form">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-sm-offset-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        <h1 class="panel-title"><strong>Liste des Etudiants</strong></h1>
+                    </div>
+                    <div class="panel-body">
+                    <% for(var i = 0; i < etudiants.length; i++) { %>
+                        <p><%= etudiants[i].prenom %> <%= etudiants[i].nom %> <%= etudiants[i].historisation %> <%= etudiants[i].idCarte %></p>
+                    <% } %>
+                    <a href="/gestionC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<% include foot%>

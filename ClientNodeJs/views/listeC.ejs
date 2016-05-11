@@ -1,0 +1,22 @@
+<% var title = 'Liste des cours' %>
+<% include head %>
+<div class="container" >
+    <div class="row centered-form">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-sm-offset-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        <h1 class="panel-title"><strong>Liste des Cours</strong></h1>
+                    </div>
+                    <div class="panel-body">
+                    <% for(var i = 0; i < cours.length; i++) { %>
+                        <p><%= cours[i].libelle %> <%= cours[i].heureDebut %> - <%= cours[i].heureFin %></p>
+                    <% } %>
+                    <a href="/gestionC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<% include foot%>
