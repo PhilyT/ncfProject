@@ -20,6 +20,34 @@
     <servlet-name>GetEtud</servlet-name>
     <servlet-class>main.java.service.GetStudents</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AddEtud</servlet-name>
+    <servlet-class>main.java.service.AddStudent</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddCour</servlet-name>
+    <servlet-class>main.java.service.AddCour</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddPresence</servlet-name>
+    <servlet-class>main.java.service.AddPresence</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RmEtud</servlet-name>
+    <servlet-class>main.java.service.RmStudent</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RmCour</servlet-name>
+    <servlet-class>main.java.service.RmCour</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdEtud</servlet-name>
+    <servlet-class>main.java.service.UpdStudent</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdCour</servlet-name>
+    <servlet-class>main.java.service.UpdCour</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ScanPassage</servlet-name>
     <url-pattern>/scan</url-pattern>
@@ -35,5 +63,33 @@
   <servlet-mapping>
     <servlet-name>CoAdmin</servlet-name>
     <url-pattern>/co_admin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddEtud</servlet-name>
+    <url-pattern>/add_etud</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddCour</servlet-name>
+    <url-pattern>/add_cour</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddPresence</servlet-name>
+    <url-pattern>/add_presence</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RmEtud</servlet-name>
+    <url-pattern>/rm_etud</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdEtud</servlet-name>
+    <url-pattern>/upd_etud</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RmCour</servlet-name>
+    <url-pattern>/rm_cour</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdCour</servlet-name>
+    <url-pattern>/upd_cour</url-pattern>
   </servlet-mapping>
 </web-app>

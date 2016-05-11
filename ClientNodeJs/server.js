@@ -50,12 +50,45 @@ app.get('/gestionE', function(req, res){
 app.get('/ajoutE', function(req, res){
 	if (admin != null) 
 	{
-		res.render('ajoutE');
+		res.render('ajoutE', {etat:""});
 	}
 	else
 	{
 		res.redirect('/loginprof');
 	}
+});
+app.post('/ajoutE', function (req,res){
+	var t;
+	var adr = "http://localhost:8080/add_etud?nom="+req.body.nomE+"&prenom="+req.body.prenomE;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.render('ajoutE', {etat:t.etat});
+				}
+				else
+				{
+					res.redirect('/listeE');
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
 });
 app.get('/gestionC', function(req, res){
 	if (admin != null) 
