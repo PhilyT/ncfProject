@@ -34,6 +34,9 @@ public class AddPresence extends HttpServlet
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
+			response.setStatus(200);
+	        response.setContentType("application/json");
+	        response.getWriter().write(json.toString());
 		}
 		catch(SQLException e)
 		{
