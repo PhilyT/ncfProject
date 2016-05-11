@@ -36,6 +36,9 @@ app.get('/admin', function(req, res){
 app.get('/gestionE', function(req, res){
     res.render('gestionE');
 });
+app.get('/ajoutE', function(req, res){
+	res.render('ajoutE');
+});
 app.get('/gestionC', function(req, res){
     res.render('gestionC');
 });
