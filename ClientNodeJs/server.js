@@ -97,6 +97,7 @@ app.get('/presenceC', function(req, res){
 });
 app.post('/presenceC', function(req, res){
 	var t;
+	logger.info("Date :", req.body.date);
 	var adr = "http://localhost:8080/get_presence?idc="+req.body.cours+"&date="+req.body.date;
 	var http = new XMLHttpRequest();
 	http.open("GET", adr, true);
@@ -110,6 +111,8 @@ app.post('/presenceC', function(req, res){
 				//t = http.responseText;
 				logger.info("t : ", t);
 				logger.info("etat : ", t.etat);
+				logger.info("presences : ", t.Presences);
+
 				if (t.etat != 'success') 
 				{
 					res.redirect('/presenceC');
