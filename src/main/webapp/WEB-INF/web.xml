@@ -34,7 +34,7 @@
   </servlet>
   <servlet>
     <servlet-name>GetPresence</servlet-name>
-    <servlet-class>main.java.service.GetPresence</servlet-class>
+    <servlet-class>main.java.service.GetPresences</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RmEtud</servlet-name>
