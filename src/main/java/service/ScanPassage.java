@@ -64,7 +64,7 @@ public class ScanPassage extends HttpServlet
 					System.out.println(dateActuel);
 					System.out.println(eleve.getId());
 					System.out.println(eleve.getIdCarte());
-					maco.updatePresence(new Presence(eleve.getId(), cour.getId(), PresenceEnum.present, dateActuel));;
+					maco.updatePresence(new Presence(eleve.getId(), cour.getId(), PresenceEnum.p, dateActuel));;
 				}
 				else
 				{

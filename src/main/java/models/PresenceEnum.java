@@ -2,7 +2,7 @@ package main.java.models;
 
 public enum PresenceEnum {
 	
-	present("p"), absent("a");
+	p("p"), a("a");
 	
 	private String presence;
 	
