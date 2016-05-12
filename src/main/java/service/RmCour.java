@@ -33,6 +33,7 @@ public class RmCour extends HttpServlet
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
+			System.out.println(idCours);
 			maco.deleteCours(idCours);
 			json.put("etat", "success");
 			response.setStatus(200);
@@ -42,6 +43,7 @@ public class RmCour extends HttpServlet
 		catch(SQLException e)
 		{
 			json.put("etat", "Erreur accès base de données !");
+			System.out.println(e);
 			response.setStatus(200);
 	        response.setContentType("application/json");
 	        response.getWriter().write(json.toString());

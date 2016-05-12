@@ -251,7 +251,7 @@ public class ConnectionBD
 	public void deleteEtudiant (int id) throws SQLException
 	{
 		Statement statement = connection.createStatement();
-		statement.executeUpdate("DELETE RROM eleve WHERE id = "+id+";");
+		statement.executeUpdate("DELETE FROM eleve WHERE id = "+id+";");
 	}
 	
 	public void insertPresence(Presence presence) throws SQLException

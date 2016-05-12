@@ -30,10 +30,11 @@ public class RmStudent extends HttpServlet
 	{
 		JSONObject json = new JSONObject();
 		int idEtud = Integer.parseInt(ide);
+		System.out.println(idEtud);
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
-			maco.deleteCours(idEtud);
+			maco.deleteEtudiant(idEtud);
 			json.put("etat", "success");
 			response.setStatus(200);
 	        response.setContentType("application/json");

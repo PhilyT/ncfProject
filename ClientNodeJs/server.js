@@ -315,7 +315,7 @@ app.get('/modifE', function(req, res){
 });
 app.post('/modifE', function(req, res){
 	var t;
-	var adr = "http://localhost:8080/upd_etud?nom="+req.body.nomE+"&prenom="+req.body.prenomE+"ide="+req.body.etudiant;
+	var adr = "http://localhost:8080/upd_etud?nom="+req.body.nomE+"&prenom="+req.body.prenomE+"&ide="+req.body.etudiant;
 	var http = new XMLHttpRequest();
 	http.open("GET", adr, true);
 	http.onreadystatechange = function()
@@ -330,7 +330,7 @@ app.post('/modifE', function(req, res){
 				logger.info("etat : ", t.etat);
 				if (t.etat != 'success') 
 				{
-					res.render('modifE', {etat:t.etat});
+					res.redirect('modifE');
 				}
 				else
 				{
@@ -406,7 +406,7 @@ app.post('/suppE', function(req, res){
 				logger.info("etat : ", t.etat);
 				if (t.etat != 'success') 
 				{
-					res.render('suppE', {etat:t.etat});
+					res.redirect('/suppE');
 				}
 				else
 				{
@@ -594,7 +594,7 @@ app.post('/modifC', function(req, res){
 				logger.info("etat : ", t.etat);
 				if (t.etat != 'success') 
 				{
-					res.render('modifC', {etat:t.etat});
+					res.redirect('/modifC');
 				}
 				else
 				{
@@ -676,7 +676,7 @@ app.post('/suppC', function(req, res){
 				logger.info("etat : ", t.etat);
 				if (t.etat != 'success') 
 				{
-					res.render('suppC', {etat:t.etat});
+					res.redirect('/suppC');
 				}
 				else
 				{
