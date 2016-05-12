@@ -14,7 +14,7 @@ Executer en ligne de comande sh DataBuild.sh
 
 ## Lancement du serveur jetty sous eclipse
 
-Configurer ecplipse : Allez dans Window -> preference -> java -> jre installer -> edit jre par default -> directory -> selectionner jdk au lieu de jre.
+Configurer eclipse : Allez dans Window -> preference -> java -> jre installer -> edit jre par default -> directory -> selectionner jdk au lieu de jre.
 
 Configurer maven et lancer le serveur : Click droit sur le projet -> run as -> run configuration -> nouvelle configuration maven -> mettre dans goal "clean install jetty:run" et dans base directory le repertoire du projet -> run.
 
