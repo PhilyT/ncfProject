@@ -9,10 +9,11 @@
                     <h1 class="panel-title"><strong>Feuille de présence</strong></h1>
                 </div>
                 <div class="panel-body">
+                    <div class="alert alert-primary" role="alert"> <div class="alert alert-warning" role="alert"><p>Libellé du cours <b><%= libelle %></b> Date :  <b><%= date %></b></p></div>
                     <% for(var i = 0; i < presence.length; i++) { %>
-                    <div class="alert alert-primary" role="alert"> <div class="alert alert-warning" role="alert"><p>Libellé du cours <b><%= presence[i].libelle %> </b></p> </div> <div class="alert alert-success" role="alert"> <p> Nom de l'étudiant <b><%= presence[i].nomEtud %> </b> </p> </div> <div class="alert alert-danger" role="alert"><p> Prénom de l'étudiant :  <b><%= presence[i].prenomEtud %>  </b></p></div> <div class="alert alert-danger" role="alert"><p> Date :  <b><%= presence[i].date %>  </b></p></div> </div>
+                     <div class="alert alert-success" role="alert"> <p> Nom de l'étudiant <b><%= presence[i].nomE %> </b> </p> </div> <div class="alert alert-danger" role="alert"><p> Prénom de l'étudiant :  <b><%= presence[i].prenomE %>  </b></p></div><div class="alert alert-danger" role="alert"><p> Présence :  <b><%= presence[i].presence %>  </b></p></div></div>
                     <% } %>
-                    <a href="/gestionC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+                    <a href="/presenceC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                 </div>
             </div>
         </div>

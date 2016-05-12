@@ -289,12 +289,14 @@ public class ConnectionBD
 			stmt = connection.createStatement();
 			result = stmt.executeQuery(requete);
 			while(result.next()){
+				PresenceEnum penum = PresenceEnum.absent;
 				Presence unePresence = new Presence(); // Nouvelle instance
 		        unePresence.setLibelle(result.getString("libelle"));
 				unePresence.setNomEtud(result.getString("nom"));
 				unePresence.setPrenomEtud(result.getString("prenom"));
 				unePresence.setDate(result.getDate("date"));
-				unePresence.setPresence(PresenceEnum.valueOf(result.getString("presence")));
+				penum.setPresence(result.getString("presence"));
+				unePresence.setPresence(penum);
 				res.add(unePresence); 
 			}
 		}

@@ -40,7 +40,7 @@ public class AddPresence extends HttpServlet
 		JSONArray ja = new JSONArray();
 		try
 		{
-			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-mm-dd");
+			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 			int idcour = Integer.parseInt(id_c);
 			int idetud = Integer.parseInt(idEtud);
 			java.util.Date date1 = sdf1.parse(date);

@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `eleve` (
 CREATE TABLE IF NOT EXISTS `presence` (
   `idEtud` int(11) NOT NULL,
   `idCours` int(11) NOT NULL,
-  `presence` enum('r','p'),
+  `presence` enum('a','p') DEFAULT 'a',
   `Date` date NOT NULL,
   PRIMARY KEY (`idEtud`,`idCours`),
   KEY `idCours` (`idCours`),

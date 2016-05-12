@@ -112,14 +112,21 @@ app.post('/presenceC', function(req, res){
 				logger.info("t : ", t);
 				logger.info("etat : ", t.etat);
 				logger.info("presences : ", t.Presences);
-
 				if (t.etat != 'success') 
 				{
 					res.redirect('/presenceC');
 				}
 				else
 				{
-					res.render('listePresenceC', {presence:t.Presences});
+					if (t.Presences.length > 0) 
+					{
+						var libelle = t.Presences[0].libelle;
+						res.render('listePresenceC', {presence:t.Presences, date:req.body.date, libelle:libelle});
+					}
+					else
+					{
+						res.render('listePresenceC', {presence:t.Presences, date:req.body.date, libelle:"Presences vide à ce jour."});
+					}
 				}
 			}
 			else

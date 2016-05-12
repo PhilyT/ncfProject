@@ -41,7 +41,7 @@ public class GetPresences extends HttpServlet
 		try
 		{
 			int idcour = Integer.parseInt(id_c);
-			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-mm-dd");
+			SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 			
 			java.util.Date date1 = (java.util.Date)sdf1.parse(date);
 			Date sqlStartDate = new Date(date1.getTime());
