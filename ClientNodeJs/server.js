@@ -145,6 +145,27 @@ app.get("/listeE", function(req, res)
 	}
 });
 
+app.get('/modifE', function(req, res){
+	if (admin != null)
+	{
+		res.render('modifE');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
+});
+
+app.get('/suppE', function(req, res){
+	if (admin != null)
+	{
+		res.render('suppE');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
+});
 app.get('/gestionC', function(req, res){
 	if (admin != null) 
 	{
@@ -251,6 +272,26 @@ app.post('/ajoutC', function (req,res){
 	http.send(null);
 });
 
+app.get('/modifC', function(req, res){
+	if (admin != null)
+	{
+		res.render('modifC');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
+});
+app.get('/suppC', function(req, res){
+	if (admin != null)
+	{
+		res.render('suppC');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
+});
 
 app.get("/logout", function(req, res)
 {
