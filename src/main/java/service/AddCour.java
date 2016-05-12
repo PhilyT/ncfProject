@@ -22,8 +22,8 @@ public class AddCour extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 		String libelle = request.getParameter("libelle");
-		String heureDebut = request.getParameter("heureDebut");
-		String heureFin = request.getParameter("heureFin");
+		String heureDebut = request.getParameter("dateDebut");
+		String heureFin = request.getParameter("dateFin");
 		try {
 			setResponse(response, libelle, heureDebut, heureFin);
 		} catch (Exception e) {
