@@ -13,7 +13,7 @@ Séléction cours datepicker submit fort
 
                         <div class="form-group">
                             <div class="dropdown">
-                                <select id="cours" name="cours" >
+                                <select  class="form-control" id="cours" name="cours" >
                                     <% for(var i = 0; i < cours.length; i++) { %>
                                     <option value="<%= cours[i].id_c%>"> <%= cours[i].libelle %> <%= cours[i].heureDebut %> - <%= cours[i].heureFin %> </option>
                                     <% } %>
