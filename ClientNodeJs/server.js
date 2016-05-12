@@ -130,6 +130,7 @@ app.post('/presenceC', function(req, res){
 });
 app.post('/listePresenceC', function(req, res){
 	var t;
+	logger.info('id du cours', req.body.cours);
 	var adr = "http://localhost:8080/add_presence?idc="+req.body.cours+"&date="+req.body.date+"&ide="+req.body.etudiant;
 	var http = new XMLHttpRequest();
 	http.open("GET", adr, true);
