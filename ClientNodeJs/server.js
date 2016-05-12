@@ -128,7 +128,38 @@ app.post('/presenceC', function(req, res){
 	}
 	http.send(null);
 });
-app.post('/listePresenceC'), function(req, res){
+app.post('/listePresenceC', function(req, res){
+	var t;
+	var adr = "http://localhost:8080/add_presence?idc="+req.body.cours+"&date="+req.body.date+"&ide="+req.body.etudiant;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.redirect('/presenceC');
+				}
+				else
+				{
+					res.render('listePresenceC', {presence:t.Presences});
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
 });
 app.get('/ajoutE', function(req, res){
 	if (admin != null) 
