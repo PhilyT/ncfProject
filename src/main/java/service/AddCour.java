@@ -6,7 +6,6 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +22,8 @@ public class AddCour extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 		String libelle = request.getParameter("libelle");
-		String heureDebut = request.getParameter("dateDebut");
-		String heureFin = request.getParameter("dateFin");
+		String heureDebut = request.getParameter("heureDebut");
+		String heureFin = request.getParameter("heureFin");
 		try {
 			setResponse(response, libelle, heureDebut, heureFin);
 		} catch (Exception e) {
@@ -39,8 +38,7 @@ public class AddCour extends HttpServlet
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
-			SimpleDateFormat format = new SimpleDateFormat("hh:mm a"); // 12 hour format
-
+			SimpleDateFormat format = new SimpleDateFormat("hh:mm");
 		    java.util.Date d1 =(java.util.Date)format.parse(heureDebut);
 		    java.util.Date d2 =(java.util.Date)format.parse(heureFin);
 		    Time hDebut = new Time(d1.getTime());
