@@ -47,6 +47,16 @@ app.get('/gestionE', function(req, res){
 		res.redirect('/loginprof');
 	}
 });
+app.get('/presenceC', function(req, res){
+	if (admin != null) 
+	{
+		res.render('presenceC');
+	}
+	else
+	{
+		res.redirect('/loginprof');
+	}
+});
 app.get('/ajoutE', function(req, res){
 	if (admin != null) 
 	{
