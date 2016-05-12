@@ -1,0 +1,59 @@
+Séléction cours datepicker submit fort
+<% var title = 'ajout presence' %>
+<% include head %>
+<div class="container" >
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-sm-offset-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title"><strong>Feuille de présence </strong></h1>
+                </div>
+                <div class="panel-body">
+                    <form method="post" action="/presenceC">
+
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Choisissez le cours
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <label for="Date">Date</label>
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker1').datetimepicker();
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <input type="submit" value="Ajouter à la feuille de présence" class="btn btn-warning btn-block">
+                        <a href="/gestionC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% include foot %>
