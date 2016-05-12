@@ -292,7 +292,7 @@ app.get('/modifE', function(req, res){
 					logger.info("prenom 1 : ", t.Etudiants[0].prenom);
 					if (t.etat == "success")
 					{
-						res.render('modifE', {eleves:t.Etudiants});
+						res.render('modifE', {eleves:t.Etudiants, etat:""});
 					}
 					else
 					{
@@ -314,7 +314,37 @@ app.get('/modifE', function(req, res){
 	}
 });
 app.post('/modifE', function(req, res){
-
+	var t;
+	var adr = "http://localhost:8080/upd_etud?nom="+req.body.nomE+"&prenom="+req.body.prenomE+"ide="+req.body.etudiant;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.render('modifE', {etat:t.etat});
+				}
+				else
+				{
+					res.redirect('/listeE');
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
 });
 app.get('/suppE', function(req, res){
 	if (admin != null)
@@ -338,7 +368,7 @@ app.get('/suppE', function(req, res){
 					logger.info("prenom 1 : ", t.Etudiants[0].prenom);
 					if (t.etat == "success")
 					{
-						res.render('suppE', {eleves:t.Etudiants});
+						res.render('suppE', {eleves:t.Etudiants, etat:""});
 					}
 					else
 					{
@@ -359,8 +389,38 @@ app.get('/suppE', function(req, res){
 		res.redirect('/loginprof');
 	}
 });
-app.post('modifE', function(req, res){
-
+app.post('/suppE', function(req, res){
+	var t;
+	var adr = "http://localhost:8080/rm_etud?ide="+req.body.etudiant;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.render('suppE', {etat:t.etat});
+				}
+				else
+				{
+					res.redirect('/listeE');
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
 });
 app.get('/gestionC', function(req, res){
 	if (admin != null) 
@@ -495,7 +555,7 @@ app.get('/modifC', function(req, res){
 						{
 							c[i].libelle = t.Cours[i].libelle;
 						}*/
-						res.render('modifC', {cours:t.Cours});
+						res.render('modifC', {cours:t.Cours, etat:""});
 					}
 					else
 					{
@@ -515,6 +575,40 @@ app.get('/modifC', function(req, res){
 	{
 		res.redirect('/loginprof');
 	}
+});
+app.post('/modifC', function(req, res){
+	var t;
+	logger.info('time:', req.body.heureDeb);
+	var adr = "http://localhost:8080/upd_cour?libelle="+req.body.libelleC+"&dateDebut="+req.body.heureDeb+"&dateFin="+req.body.heureFin+"&idc="+req.body.cours;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.render('modifC', {etat:t.etat});
+				}
+				else
+				{
+					res.redirect('/listeC');
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
 });
 app.get('/suppC', function(req, res){
 	if (admin != null)
@@ -543,7 +637,7 @@ app.get('/suppC', function(req, res){
 						{
 							c[i].libelle = t.Cours[i].libelle;
 						}*/
-						res.render('suppC', {cours:t.Cours});
+						res.render('suppC', {cours:t.Cours, etat:""});
 					}
 					else
 					{
@@ -564,7 +658,40 @@ app.get('/suppC', function(req, res){
 		res.redirect('/loginprof');
 	}
 });
-
+app.post('/suppC', function(req, res){
+	var t;
+	logger.info('time:', req.body.heureDeb);
+	var adr = "http://localhost:8080/rm_cour?idc="+req.body.cours;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.render('suppC', {etat:t.etat});
+				}
+				else
+				{
+					res.redirect('/listeC');
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
+});
 app.get("/logout", function(req, res)
 {
 	admin = null;
