@@ -42,7 +42,7 @@ public class AddCour extends HttpServlet
 		    java.util.Date d1 =(java.util.Date)format.parse(heureDebut+":00");
 		    java.util.Date d2 =(java.util.Date)format.parse(heureFin+":00");
 		    Time hDebut = new Time(d1.getTime());
-		    Time hFin = new Time(d1.getTime());
+		    Time hFin = new Time(d2.getTime());
 			Cours cour = new Cours();
 			cour.setHeureDebut(hDebut);
 			cour.setHeureFin(hFin);
