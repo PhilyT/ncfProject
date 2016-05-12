@@ -273,7 +273,40 @@ app.get("/listeE", function(req, res)
 app.get('/modifE', function(req, res){
 	if (admin != null)
 	{
-		res.render('modifE');
+		var t;
+		var adr = "http://localhost:8080/etudiants";
+		var http = new XMLHttpRequest();
+
+		http.open("GET", adr, true);
+		http.onreadystatechange = function()
+		{
+			if(http.readyState==4)
+			{
+				if (http.status == 200)
+				{
+					t=JSON.parse(http.responseText);
+					//t = http.responseText;
+					logger.info("t : ", t);
+					logger.info("etat : ", t.etat);
+					logger.info("Etudiants : ", t.Etudiants);
+					logger.info("prenom 1 : ", t.Etudiants[0].prenom);
+					if (t.etat == "success")
+					{
+						res.render('modifE', {etudiants:t.Etudiants});
+					}
+					else
+					{
+						logger.info("erreur d'obtention de la liste des etudiants");
+					}
+				}
+				else
+				{
+					logger.info('Status Page : ', http.status);
+					logger.info("erreur accès au service rest");
+				}
+			}
+		}
+		http.send(null);
 	}
 	else
 	{
@@ -284,7 +317,40 @@ app.get('/modifE', function(req, res){
 app.get('/suppE', function(req, res){
 	if (admin != null)
 	{
-		res.render('suppE');
+		var t;
+		var adr = "http://localhost:8080/etudiants";
+		var http = new XMLHttpRequest();
+
+		http.open("GET", adr, true);
+		http.onreadystatechange = function()
+		{
+			if(http.readyState==4)
+			{
+				if (http.status == 200)
+				{
+					t=JSON.parse(http.responseText);
+					//t = http.responseText;
+					logger.info("t : ", t);
+					logger.info("etat : ", t.etat);
+					logger.info("Etudiants : ", t.Etudiants);
+					logger.info("prenom 1 : ", t.Etudiants[0].prenom);
+					if (t.etat == "success")
+					{
+						res.render('suppE', {etudiants:t.Etudiants});
+					}
+					else
+					{
+						logger.info("erreur d'obtention de la liste des etudiants");
+					}
+				}
+				else
+				{
+					logger.info('Status Page : ', http.status);
+					logger.info("erreur accès au service rest");
+				}
+			}
+		}
+		http.send(null);
 	}
 	else
 	{
@@ -400,7 +466,45 @@ app.post('/ajoutC', function (req,res){
 app.get('/modifC', function(req, res){
 	if (admin != null)
 	{
-		res.render('modifC');
+		var t;
+		var adr = "http://localhost:8080/cours";
+		var http = new XMLHttpRequest();
+			
+		http.open("GET", adr, true);
+		http.onreadystatechange = function()
+		{
+			if(http.readyState==4)
+			{
+				if (http.status == 200) 
+				{
+					t=JSON.parse(http.responseText);
+					//t = http.responseText;
+					logger.info("t : ", t);
+					logger.info("etat : ", t.etat);
+					logger.info("Cours : ", t.Cours);
+					logger.info("libelle 1 : ", t.Cours[0].libelle);
+					if (t.etat == "success") 
+					{
+						/*var c = new Object[t.Cours.length];
+						for(var i = 0; i<t.Cours.length; i++)
+						{
+							c[i].libelle = t.Cours[i].libelle;
+						}*/
+						res.render('modifC', {cours:t.Cours});
+					}
+					else
+					{
+						logger.info("erreur d'obtention de la liste des cours");
+					}
+				}
+				else
+				{
+					logger.info('Status Page : ', http.status);
+					logger.info("erreur accès au service rest");
+				}
+			}
+		}
+		http.send(null);
 	}
 	else
 	{
@@ -410,7 +514,45 @@ app.get('/modifC', function(req, res){
 app.get('/suppC', function(req, res){
 	if (admin != null)
 	{
-		res.render('suppC');
+		var t;
+		var adr = "http://localhost:8080/cours";
+		var http = new XMLHttpRequest();
+			
+		http.open("GET", adr, true);
+		http.onreadystatechange = function()
+		{
+			if(http.readyState==4)
+			{
+				if (http.status == 200) 
+				{
+					t=JSON.parse(http.responseText);
+					//t = http.responseText;
+					logger.info("t : ", t);
+					logger.info("etat : ", t.etat);
+					logger.info("Cours : ", t.Cours);
+					logger.info("libelle 1 : ", t.Cours[0].libelle);
+					if (t.etat == "success") 
+					{
+						/*var c = new Object[t.Cours.length];
+						for(var i = 0; i<t.Cours.length; i++)
+						{
+							c[i].libelle = t.Cours[i].libelle;
+						}*/
+						res.render('suppC', {cours:t.Cours});
+					}
+					else
+					{
+						logger.info("erreur d'obtention de la liste des cours");
+					}
+				}
+				else
+				{
+					logger.info('Status Page : ', http.status);
+					logger.info("erreur accès au service rest");
+				}
+			}
+		}
+		http.send(null);
 	}
 	else
 	{
