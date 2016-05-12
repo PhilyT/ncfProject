@@ -1,0 +1,22 @@
+<% var title = 'Liste presence' %>
+<% include head %>
+<div class="container" >
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-sm-offset-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <h1 class="panel-title"><strong>Feuille de présence</strong></h1>
+                </div>
+                <div class="panel-body">
+                    <% for(var i = 0; i < presence.length; i++) { %>
+                    <div class="alert alert-primary" role="alert"> <div class="alert alert-warning" role="alert"><p>Libellé du cours <b><%= presence[i].libelle %> </b></p> </div> <div class="alert alert-success" role="alert"> <p> Nom de l'étudiant <b><%= presence[i].nomEtud %> </b> </p> </div> <div class="alert alert-danger" role="alert"><p> Prénom de l'étudiant :  <b><%= presence[i].prenomEtud %>  </b></p></div> <div class="alert alert-danger" role="alert"><p> Date :  <b><%= presence[i].date %>  </b></p></div> </div>
+                    <% } %>
+                    <a href="/gestionC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include foot%>
