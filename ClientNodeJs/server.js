@@ -121,11 +121,11 @@ app.post('/presenceC', function(req, res){
 					if (t.Presences.length > 0) 
 					{
 						var libelle = t.Presences[0].libelle;
-						res.render('listePresenceC', {presence:t.Presences, date:req.body.date, libelle:libelle});
+						res.render('listePresenceC', {presence:t.Presences, date:req.body.date, idc:req.body.cours ,libelle:libelle, eleves:t.Eleves});
 					}
 					else
 					{
-						res.render('listePresenceC', {presence:t.Presences, date:req.body.date, libelle:"Presences vide à ce jour."});
+						res.render('listePresenceC', {presence:t.Presences, date:req.body.date, idc:req.body.cours, libelle:"Presences vide à ce jour.", eleves:t.Eleves});
 					}
 				}
 			}
@@ -141,6 +141,8 @@ app.post('/presenceC', function(req, res){
 app.post('/listePresenceC', function(req, res){
 	var t;
 	logger.info('id du cours', req.body.cours);
+	logger.info('id du cours', req.body.date);
+	logger.info('id du etudiant', req.body.etudiant);
 	var adr = "http://localhost:8080/add_presence?idc="+req.body.cours+"&date="+req.body.date+"&ide="+req.body.etudiant;
 	var http = new XMLHttpRequest();
 	http.open("GET", adr, true);
@@ -160,7 +162,15 @@ app.post('/listePresenceC', function(req, res){
 				}
 				else
 				{
-					res.render('listePresenceC', {presence:t.Presences});
+					if (t.Presences.length > 0) 
+					{
+						var libelle = t.Presences[0].libelle;
+						res.render('listePresenceC', {presence:t.Presences, date:req.body.date, idc:req.body.cours ,libelle:libelle, eleves:t.Eleves});
+					}
+					else
+					{
+						res.render('listePresenceC', {presence:t.Presences, date:req.body.date, idc:req.body.cours, libelle:"Presences vide à ce jour.", eleves:t.Eleves});
+					}
 				}
 			}
 			else

@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `presence` (
   `idCours` int(11) NOT NULL,
   `presence` enum('a','p') DEFAULT 'a',
   `Date` date NOT NULL,
-  PRIMARY KEY (`idEtud`,`idCours`),
+  PRIMARY KEY (`idEtud`,`idCours`, `Date`),
   KEY `idCours` (`idCours`),
   CONSTRAINT `presence_ibfk_1` FOREIGN KEY (`idCours`) REFERENCES `cours` (`id_c`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `presence_ibfk_2` FOREIGN KEY (`idEtud`) REFERENCES `eleve` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

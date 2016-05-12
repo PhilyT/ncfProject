@@ -13,6 +13,20 @@
                     <% for(var i = 0; i < presence.length; i++) { %>
                      <div class="alert alert-success" role="alert"> <p> Nom de l'étudiant <b><%= presence[i].nomE %> </b> </p> </div> <div class="alert alert-danger" role="alert"><p> Prénom de l'étudiant :  <b><%= presence[i].prenomE %>  </b></p></div><div class="alert alert-danger" role="alert"><p> Présence :  <b><%= presence[i].presence %>  </b></p></div></div>
                     <% } %>
+                    <form method="post" action="/listePresenceC">
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <select id="etudiant" name="etudiant" >
+                                    <% for(var i = 0; i < eleves.length; i++) { %>
+                                    <option value="<%= eleves[i].id%>"> <%= eleves[i].prenom %> <%= eleves[i].nom %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <input type="HIDDEN" id="cours" name="cours" value=<%= idc %>>
+                            <input type="HIDDEN" id="date" name="date" value=<%= date %>>
+                            <input type="submit" value="Ajouter étudiant" class="btn btn-warning btn-block">
+                        </div>
+                    </form>
                     <a href="/presenceC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                 </div>
             </div>
