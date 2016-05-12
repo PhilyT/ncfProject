@@ -293,7 +293,8 @@ public class ConnectionBD
 		        unePresence.setLibelle(result.getString("libelle"));
 				unePresence.setNomEtud(result.getString("nom"));
 				unePresence.setPrenomEtud(result.getString("prenom"));
-				unePresence.setDate(result.getDate("date"));		 
+				unePresence.setDate(result.getDate("date"));
+				unePresence.setPresence(PresenceEnum.valueOf(result.getString("presence")));
 				res.add(unePresence); 
 			}
 		}
