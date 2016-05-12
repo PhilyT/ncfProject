@@ -18,7 +18,9 @@ Séléction cours datepicker submit fort
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
+                                    <% for(var i = 0; i < cours.length; i++) { %>
+                                            <li><%= cours[i].libelle %></li>
+                                    <% } %>
                                 </ul>
                             </div>
                         </div>
