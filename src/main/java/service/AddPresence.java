@@ -5,12 +5,14 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -35,6 +37,7 @@ public class AddPresence extends HttpServlet
 	private void setResponse(HttpServletResponse response, String id_c, String idEtud, String date) throws JSONException, IOException, ClassNotFoundException
 	{
 		JSONObject json = new JSONObject();
+		JSONArray ja = new JSONArray();
 		try
 		{
 			SimpleDateFormat sdf1 = new SimpleDateFormat("dd-mm-yyyy");
@@ -48,7 +51,19 @@ public class AddPresence extends HttpServlet
 			presence.setIdCours(idcour);
 			presence.setIdEtud(idetud);
 			maco.insertPresence(presence);
+			ArrayList<Presence> cours = maco.getPresence(sqlStartDate, idcour);
+			for	(int i = 0; i < cours.size(); i++)
+			{
+				JSONObject jsonCour = new JSONObject();
+				jsonCour.put("libelle", cours.get(i).getLibelle());
+				jsonCour.put("nomE", cours.get(i).getNomEtud());
+				jsonCour.put("prenomE", cours.get(i).getPrenomEtud());
+				jsonCour.put("date", cours.get(i).getDate());
+				jsonCour.put("presence", cours.get(i).getPresence());
+				ja.put(jsonCour);
+			}
 			json.put("etat", "success");
+			json.put("Presences", ja);
 			response.setStatus(200);
 	        response.setContentType("application/json");
 	        response.getWriter().write(json.toString());

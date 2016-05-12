@@ -50,12 +50,85 @@ app.get('/gestionE', function(req, res){
 app.get('/presenceC', function(req, res){
 	if (admin != null) 
 	{
-		res.render('presenceC');
+		var t;
+		var adr = "http://localhost:8080/cours";
+		var http = new XMLHttpRequest();
+			
+		http.open("GET", adr, true);
+		http.onreadystatechange = function()
+		{
+			if(http.readyState==4)
+			{
+				if (http.status == 200) 
+				{
+					t=JSON.parse(http.responseText);
+					//t = http.responseText;
+					logger.info("t : ", t);
+					logger.info("etat : ", t.etat);
+					logger.info("Cours : ", t.Cours);
+					logger.info("libelle 1 : ", t.Cours[0].libelle);
+					if (t.etat == "success") 
+					{
+						/*var c = new Object[t.Cours.length];
+						for(var i = 0; i<t.Cours.length; i++)
+						{
+							c[i].libelle = t.Cours[i].libelle;
+						}*/
+						res.render('presenceC', {cours:t.Cours});
+					}
+					else
+					{
+						logger.info("erreur d'obtention de la liste des cours");
+					}
+				}
+				else
+				{
+					logger.info('Status Page : ', http.status);
+					logger.info("erreur accès au service rest");
+				}
+			}
+		}
+		http.send(null);
 	}
 	else
 	{
 		res.redirect('/loginprof');
 	}
+});
+app.post('/presenceC', function(req, res){
+	var t;
+	var adr = "http://localhost:8080/get_presence?idc="+req.body.cours+"&date="+req.body.date;
+	var http = new XMLHttpRequest();
+	http.open("GET", adr, true);
+	http.onreadystatechange = function()
+	{
+		if(http.readyState==4)
+		{
+			if (http.status == 200) 
+			{
+				t=JSON.parse(http.responseText);
+				//t = http.responseText;
+				logger.info("t : ", t);
+				logger.info("etat : ", t.etat);
+				if (t.etat != 'success') 
+				{
+					res.redirect('/presenceC');
+				}
+				else
+				{
+					res.render('listePresenceC', {presence:t.Presences});
+				}
+			}
+			else
+			{
+				logger.info('Status Page : ', http.status);
+				logger.info("erreur accès au service rest");
+			}
+		}
+	}
+	http.send(null);
+});
+app.post('/listePresenceC'), function(req, res){
 });
 app.get('/ajoutE', function(req, res){
 	if (admin != null) 

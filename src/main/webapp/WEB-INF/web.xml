@@ -33,6 +33,10 @@
     <servlet-class>main.java.service.AddPresence</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>GetPresence</servlet-name>
+    <servlet-class>main.java.service.GetPresence</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>RmEtud</servlet-name>
     <servlet-class>main.java.service.RmStudent</servlet-class>
   </servlet>
@@ -75,6 +79,10 @@
   <servlet-mapping>
     <servlet-name>AddPresence</servlet-name>
     <url-pattern>/add_presence</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetPresence</servlet-name>
+    <url-pattern>/get_presence</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>RmEtud</servlet-name>
