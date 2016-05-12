@@ -38,9 +38,9 @@ public class AddCour extends HttpServlet
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
-			SimpleDateFormat format = new SimpleDateFormat("mm:hh");
-		    java.util.Date d1 =(java.util.Date)format.parse(heureDebut);
-		    java.util.Date d2 =(java.util.Date)format.parse(heureFin);
+			SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
+		    java.util.Date d1 =(java.util.Date)format.parse(heureDebut+":00");
+		    java.util.Date d2 =(java.util.Date)format.parse(heureFin+":00");
 		    Time hDebut = new Time(d1.getTime());
 		    Time hFin = new Time(d1.getTime());
 			Cours cour = new Cours();
