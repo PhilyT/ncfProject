@@ -292,7 +292,7 @@ app.get('/modifE', function(req, res){
 					logger.info("prenom 1 : ", t.Etudiants[0].prenom);
 					if (t.etat == "success")
 					{
-						res.render('modifE', {etudiants:t.Etudiants});
+						res.render('modifE', {eleves:t.Etudiants});
 					}
 					else
 					{
@@ -336,7 +336,7 @@ app.get('/suppE', function(req, res){
 					logger.info("prenom 1 : ", t.Etudiants[0].prenom);
 					if (t.etat == "success")
 					{
-						res.render('suppE', {etudiants:t.Etudiants});
+						res.render('suppE', {eleves:t.Etudiants});
 					}
 					else
 					{

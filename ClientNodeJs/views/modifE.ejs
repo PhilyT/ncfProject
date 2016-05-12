@@ -12,13 +12,11 @@
 
                         <div class="form-group">
                             <div class="dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Choisissez l'étudiant
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-                                </ul>
+                                <select class="form-control" id="etudiant" name="etudiant" >
+                                    <% for(var i = 0; i < eleves.length; i++) { %>
+                                    <option value="<%= eleves[i].id%>"> <%= eleves[i].prenom %> <%= eleves[i].nom %></option>
+                                    <% } %>
+                                </select>
                             </div>
                         </div>
 

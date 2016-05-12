@@ -8,22 +8,18 @@
                     <h1 class="panel-title"><strong>Supprimer un étudiant </strong></h1>
                 </div>
                 <div class="panel-body">
-
-                    <table class="table table-striped">
-                        <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>idCarte</th>
-                            <th>        </th>
-                        </tr>
-
-                        <tr>
-
-                            <td><button type="button" class="btn btn-danger">Supprimer</button></td>
-                        </tr>
-                    </table>
+                    <form method="post" action="/suppE">
+                    <div class="dropdown">
+                        <select class="form-control" id="etudiant" name="etudiant" >
+                            <% for(var i = 0; i < eleves.length; i++) { %>
+                                <option value="<%= eleves[i].id%>"> <%= eleves[i].prenom %> <%= eleves[i].nom %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <br />
+                    <input type="submit" value="Supprimer l'étudiant" class="btn btn-warning btn-block">
                     <a href="/gestionE"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
-
+                    </form>
                 </div>
             </div>
         </div>

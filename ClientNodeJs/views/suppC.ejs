@@ -9,21 +9,20 @@
                 </div>
                 <div class="panel-body">
 
-                    <table class="table table-striped">
-                        <tr>
-                            <th>Libellé</th>
-                            <th>Heure Début</th>
-                            <th>Heure Fin</th>
-                            <th>        </th>
-                        </tr>
+                    <form method="post" action="/suppC">
 
-                        <tr>
-
-                            <td><button type="button" class="btn btn-danger">Supprimer</button></td>
-
-                        </tr>
-                    </table>
-                    <a href="/gestionC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <select class="form-control" id="cours" name="cours" >
+                                    <% for(var i = 0; i < cours.length; i++) { %>
+                                    <option value="<%= cours[i].id_c%>"> <%= cours[i].libelle %> <%= cours[i].heureDebut %> - <%= cours[i].heureFin %> </option>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="submit" value="Supprimer le cours" class="btn btn-warning btn-block">
+                        <a href="/gestionC"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+                    </form>
 
                 </div>
             </div>
