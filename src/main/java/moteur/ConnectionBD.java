@@ -147,7 +147,7 @@ public class ConnectionBD
 		return res;
 	}
 	
-	public ArrayList<Presence> getPresence(int idCour) throws SQLException
+	/*public ArrayList<Presence> getPresence(int idCour) throws SQLException
 	{
 		ArrayList<Presence> res = new ArrayList<Presence>();
 		ResultSet result;
@@ -173,7 +173,7 @@ public class ConnectionBD
 			stmt.close();
 		}
 		return res;
-	}
+	}*/
 	
 	public Admin getAdministrateur(String email, String mdp) throws Exception
 	{
@@ -276,5 +276,35 @@ public class ConnectionBD
         
         return hexData.toString();
     }
+	
+	public ArrayList<Presence>getPresence(java.sql.Date date, int idCours)throws SQLException
+	{
+		
+		ArrayList<Presence> res = new ArrayList<Presence>();
+		ResultSet result;
+		String requete = "SELECT c.libelle, e.nom, e.prenom , p.date , p.presence FROM cours c, eleve e, presence p WHERE p.idEtud = e.id AND p.idCours =c.id_c AND c.id_c = " + idCours +" AND  p.Date = '"+ date+"';";
+		Statement stmt = null;
+		try 
+		{
+			stmt = connection.createStatement();
+			result = stmt.executeQuery(requete);
+			while(result.next()){
+				Presence unePresence = new Presence(); // Nouvelle instance
+		        unePresence.setLibelle(result.getString("libelle"));
+				unePresence.setNomEtud(result.getString("nom"));
+				unePresence.setPrenomEtud(result.getString("prenom"));
+				unePresence.setDate(result.getDate("date"));		 
+				res.add(unePresence); 
+			}
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e);
+		} finally {
+			stmt.close();
+		}
+		return res;
+		
+	}
 }
 
