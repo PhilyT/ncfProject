@@ -1,0 +1,38 @@
+<% var title = 'suppression etudiant' %>
+<% include head %>
+<div class="container" >
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-sm-offset-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title"><strong>Supprimer un étudiant </strong></h1>
+                </div>
+                <div class="panel-body">
+
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>idCarte</th>
+                        </tr>
+
+                        <tr>
+                            <% for(var i = 0; i < etudiants.length; i++) { %>
+                            <td><%= etudiants[i].prenom %></td>
+                            <td><%= etudiants[i].nom %></td>
+                            <td><%= etudiants[i].idCarte %></td>
+                            <% } %>
+                            <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+                        </tr>
+                    </table>
+                    <a href="/gestionE"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% include foot %>
