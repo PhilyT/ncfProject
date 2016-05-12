@@ -17,20 +17,27 @@ public class RmStudent extends HttpServlet
 {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+		String ide = request.getParameter("ide");
 		try {
-			setResponse(response);
+			setResponse(response, ide);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
 	
-	private void setResponse(HttpServletResponse response) throws JSONException, IOException, ClassNotFoundException
+	private void setResponse(HttpServletResponse response, String ide) throws JSONException, IOException, ClassNotFoundException
 	{
 		JSONObject json = new JSONObject();
+		int idEtud = Integer.parseInt(ide);
 		try
 		{
 			ConnectionBD maco = new ConnectionBD();
+			maco.deleteCours(idEtud);
+			json.put("etat", "success");
+			response.setStatus(200);
+	        response.setContentType("application/json");
+	        response.getWriter().write(json.toString());
 		}
 		catch(SQLException e)
 		{

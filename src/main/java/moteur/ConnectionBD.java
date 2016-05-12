@@ -231,10 +231,10 @@ public class ConnectionBD
 		statement.executeUpdate("UPDATE cours set heureDebut ='"
 		+ cours.getHeureDebut()+"', heureFin='"+cours.getHeureFin()+"' where id_c ="+cours.getId()+";");
 	}
-	public void  deleteCours (Cours cours) throws SQLException
+	public void  deleteCours (int id) throws SQLException
 	{
 		Statement statement = connection.createStatement();
-		statement.executeUpdate("DELETE FROM cours where id_c ='" + cours.getId()+"';");
+		statement.executeUpdate("DELETE FROM cours where id_c =" + id+";");
 	}
 	public void insertEtudiants(Eleve eleve) throws SQLException
 	{
@@ -248,10 +248,10 @@ public class ConnectionBD
 		statement.executeUpdate("UPDATE eleve set nom = '"+eleve.getNom()+"', prenom = '"+eleve.getPrenom()+"', id_historisation = idCarte , idCarte ='"+eleve.getIdCarte()+"'" +
 		"WHERE id ='"+eleve.getId()+"';");
 	}
-	public void deleteEtudiant (Eleve eleve) throws SQLException
+	public void deleteEtudiant (int id) throws SQLException
 	{
 		Statement statement = connection.createStatement();
-		statement.executeUpdate("DELETE RROM eleve WHERE id = '"+eleve.getId()+"';");
+		statement.executeUpdate("DELETE RROM eleve WHERE id = "+id+";");
 	}
 	
 	public void insertPresence(Presence presence) throws SQLException

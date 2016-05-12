@@ -313,7 +313,9 @@ app.get('/modifE', function(req, res){
 		res.redirect('/loginprof');
 	}
 });
+app.post('/modifE', function(req, res){
 
+});
 app.get('/suppE', function(req, res){
 	if (admin != null)
 	{
@@ -356,6 +358,9 @@ app.get('/suppE', function(req, res){
 	{
 		res.redirect('/loginprof');
 	}
+});
+app.post('modifE', function(req, res){
+
 });
 app.get('/gestionC', function(req, res){
 	if (admin != null) 
